@@ -11,7 +11,6 @@ namespace TreeMgmtSystem
     public partial class DashboardForm : Form
     {
         private DatabaseQueries dbQueries;
-        private TreeWarningSystem warningSystem;
         private ManageTreesForm manageTreesForm;
         private ManageServicesForm manageServicesForm;
         private ManageUsersForm manageUsersForm;

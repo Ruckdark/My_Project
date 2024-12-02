@@ -59,7 +59,7 @@
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(292, 15);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(216, 37);
+            this.lblTitle.Size = new System.Drawing.Size(275, 37);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Quản Lý Dịch Vụ";
             // 
@@ -82,6 +82,7 @@
             this.dataGridViewServices.RowTemplate.Height = 28;
             this.dataGridViewServices.Size = new System.Drawing.Size(800, 361);
             this.dataGridViewServices.TabIndex = 0;
+            this.dataGridViewServices.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewServices_CellDoubleClick);
             // 
             // panelActions
             // 
