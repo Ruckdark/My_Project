@@ -1,149 +1,133 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿// AddToTopicForm.cs (có thêm tạo topic mới)
+using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using WordVaultAppMVC.Data;
 
 namespace WordVaultAppMVC.Views
 {
-    public partial class AddTopicForm : Form
+    public partial class AddToTopicForm : Form
     {
-        private List<string> vocabularyList = new List<string>();
-        private TextBox txtNewVocabulary;
-        private ListBox lstVocabulary;
+        private readonly string word;
 
-        public AddTopicForm()
+        public AddToTopicForm(string word)
         {
             InitializeComponent();
+            this.word = word;
+            lblWord.Text = $"Từ: {word}";
+            LoadTopics();
         }
 
-        // Sự kiện khi người dùng nhấn nút "Thêm từ vựng"
-        private void btnAddVocabulary_Click(object sender, EventArgs e)
+        private void LoadTopics()
         {
-            string newVocabulary = txtNewVocabulary.Text.Trim();
-            if (!string.IsNullOrEmpty(newVocabulary))
+            cboTopics.Items.Clear();
+            using (var conn = DatabaseContext.GetConnection())
             {
-                vocabularyList.Add(newVocabulary);
-                lstVocabulary.Items.Add(newVocabulary);
-                txtNewVocabulary.Clear();
+                conn.Open();
+                using (var cmd = new SqlCommand("SELECT Id, Name FROM Topics", conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        cboTopics.Items.Add(new ComboBoxItem(reader.GetInt32(0), reader.GetString(1)));
+                    }
+                }
+            }
+            if (cboTopics.Items.Count > 0)
+                cboTopics.SelectedIndex = 0;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (cboTopics.SelectedItem is ComboBoxItem selectedTopic)
+            {
+                AddWordToTopic(selectedTopic.Id);
             }
             else
             {
-                MessageBox.Show("Vui lòng nhập từ vựng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng chọn một chủ đề.");
             }
         }
 
-        // Sự kiện khi người dùng nhấn nút "Lưu chủ đề"
-        private void btnSave_Click(object sender, EventArgs e)
+        private void AddWordToTopic(int topicId)
         {
-            string topicName = txtTopicName.Text.Trim();
-            if (string.IsNullOrEmpty(topicName))
+            using (var conn = DatabaseContext.GetConnection())
             {
-                MessageBox.Show("Vui lòng nhập tên chủ đề.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                conn.Open();
 
-            if (vocabularyList.Count == 0)
-            {
-                MessageBox.Show("Vui lòng thêm ít nhất một từ vựng vào chủ đề.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                var getWordIdCmd = new SqlCommand("SELECT Id FROM Vocabulary WHERE Word = @Word", conn);
+                getWordIdCmd.Parameters.AddWithValue("@Word", word);
+                var wordIdObj = getWordIdCmd.ExecuteScalar();
 
-            // Lưu chủ đề và từ vựng vào cơ sở dữ liệu.
-            SaveTopicToDatabase(topicName, vocabularyList);
-
-            MessageBox.Show("Chủ đề và từ vựng đã được lưu thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close(); // Đóng form sau khi lưu thành công.
-        }
-
-        // Cài đặt phương thức lưu chủ đề và danh sách từ vựng vào cơ sở dữ liệu
-        private void SaveTopicToDatabase(string topicName, List<string> vocabularyList)
-        {
-            using (var connection = DatabaseContext.GetConnection())
-            {
-                connection.Open();
-                using (SqlTransaction transaction = connection.BeginTransaction())
+                if (wordIdObj == null)
                 {
-                    try
-                    {
-                        int topicId = 0;
-                        // Chèn chủ đề mới và lấy Id chủ đề
-                        string insertTopicQuery = "INSERT INTO Topics (Name) OUTPUT INSERTED.Id VALUES (@Name)";
-                        using (SqlCommand cmdTopic = new SqlCommand(insertTopicQuery, connection, transaction))
-                        {
-                            cmdTopic.Parameters.AddWithValue("@Name", topicName);
-                            topicId = (int)cmdTopic.ExecuteScalar();
-                        }
+                    MessageBox.Show("Không tìm thấy từ này trong cơ sở dữ liệu.");
+                    return;
+                }
 
-                        // Với mỗi từ vựng, kiểm tra, chèn (nếu cần), và lưu record vào bảng liên kết VocabularyTopic
-                        foreach (var word in vocabularyList)
-                        {
-                            int vocabularyId = 0;
-                            // Kiểm tra xem từ vựng đã tồn tại chưa
-                            string checkVocabularyQuery = "SELECT Id FROM Vocabulary WHERE Word = @Word";
-                            using (SqlCommand cmdCheck = new SqlCommand(checkVocabularyQuery, connection, transaction))
-                            {
-                                cmdCheck.Parameters.AddWithValue("@Word", word);
-                                var result = cmdCheck.ExecuteScalar();
-                                if (result != null)
-                                {
-                                    vocabularyId = (int)result;
-                                }
-                            }
+                int wordId = Convert.ToInt32(wordIdObj);
 
-                            // Nếu chưa tồn tại, chèn mới vào bảng Vocabulary (với các thông tin còn lại rỗng hoặc mặc định)
-                            if (vocabularyId == 0)
-                            {
-                                string insertVocabularyQuery = "INSERT INTO Vocabulary (Word, Meaning, Pronunciation, AudioUrl) OUTPUT INSERTED.Id VALUES (@Word, '', '', '')";
-                                using (SqlCommand cmdInsertVocab = new SqlCommand(insertVocabularyQuery, connection, transaction))
-                                {
-                                    cmdInsertVocab.Parameters.AddWithValue("@Word", word);
-                                    vocabularyId = (int)cmdInsertVocab.ExecuteScalar();
-                                }
-                            }
+                var insertCmd = new SqlCommand("INSERT INTO VocabularyTopic (VocabularyId, TopicId) VALUES (@WordId, @TopicId)", conn);
+                insertCmd.Parameters.AddWithValue("@WordId", wordId);
+                insertCmd.Parameters.AddWithValue("@TopicId", topicId);
 
-                            // Chèn record vào bảng liên kết VocabularyTopic
-                            string insertVocabularyTopicQuery = "INSERT INTO VocabularyTopic (VocabularyId, TopicId) VALUES (@VocabularyId, @TopicId)";
-                            using (SqlCommand cmdVT = new SqlCommand(insertVocabularyTopicQuery, connection, transaction))
-                            {
-                                cmdVT.Parameters.AddWithValue("@VocabularyId", vocabularyId);
-                                cmdVT.Parameters.AddWithValue("@TopicId", topicId);
-                                cmdVT.ExecuteNonQuery();
-                            }
-                        }
-
-                        transaction.Commit();
-                    }
-                    catch (Exception ex)
-                    {
-                        transaction.Rollback();
-                        MessageBox.Show("Lỗi khi lưu chủ đề và từ vựng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                try
+                {
+                    insertCmd.ExecuteNonQuery();
+                    MessageBox.Show("📚 Đã thêm vào chủ đề thành công!");
+                    this.Close();
+                }
+                catch (SqlException)
+                {
+                    MessageBox.Show("Từ này đã có trong chủ đề này rồi.");
                 }
             }
         }
 
-        // Sự kiện khi người dùng nhấn nút "Hủy"
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void btnCreateTopic_Click(object sender, EventArgs e)
         {
-            this.Close(); // Đóng form mà không lưu.
-        }
-
-        // Sự kiện khi người dùng nhấn "Thêm chủ đề mới"
-        private void btnAddTopic_Click(object sender, EventArgs e)
-        {
-            // Reset lại form để thêm chủ đề mới
-            string topicName = txtTopicName.Text.Trim();
-            if (string.IsNullOrEmpty(topicName))
+            string newTopic = txtNewTopic.Text.Trim();
+            if (string.IsNullOrEmpty(newTopic))
             {
-                MessageBox.Show("Vui lòng nhập tên chủ đề.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng nhập tên chủ đề mới.");
                 return;
             }
 
-            lstVocabulary.Items.Clear();
-            vocabularyList.Clear();
-            MessageBox.Show($"Chủ đề \"{topicName}\" đã được thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            using (var conn = DatabaseContext.GetConnection())
+            {
+                conn.Open();
+                var checkCmd = new SqlCommand("SELECT COUNT(*) FROM Topics WHERE Name = @Name", conn);
+                checkCmd.Parameters.AddWithValue("@Name", newTopic);
+                int count = (int)checkCmd.ExecuteScalar();
+                if (count > 0)
+                {
+                    MessageBox.Show("Chủ đề này đã tồn tại.");
+                    return;
+                }
+
+                var insertCmd = new SqlCommand("INSERT INTO Topics (Name) VALUES (@Name)", conn);
+                insertCmd.Parameters.AddWithValue("@Name", newTopic);
+                insertCmd.ExecuteNonQuery();
+            }
+
+            LoadTopics();
+            cboTopics.SelectedIndex = cboTopics.FindStringExact(newTopic);
+            txtNewTopic.Clear();
+            MessageBox.Show("✅ Đã tạo chủ đề mới.");
         }
+    }
+
+    public class ComboBoxItem
+    {
+        public int Id { get; }
+        public string Name { get; }
+
+        public ComboBoxItem(int id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
+
+        public override string ToString() => Name;
     }
 }

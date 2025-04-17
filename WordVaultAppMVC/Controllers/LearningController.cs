@@ -54,7 +54,7 @@ namespace WordVaultAppMVC.Controllers
             }
         }
 
-        private void UpdateLearningStatus(string wordId, string status)
+        public void UpdateLearningStatus(string wordId, string status)
         {
             var existingStatus = _learningStatusRepository.GetLearningStatusByWordId(wordId);
             if (existingStatus != null)

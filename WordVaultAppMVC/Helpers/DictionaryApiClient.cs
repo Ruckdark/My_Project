@@ -46,9 +46,20 @@ namespace WordVaultAppMVC.Helpers
                 var entry = root[0];
 
                 // Lấy phát âm
-                string pronunciation = entry.phonetics?.FirstOrDefault(p => !string.IsNullOrEmpty(p.text))?.text ?? "";
+                // Ưu tiên phát âm US
+                string pronunciation = entry.phonetics?
+                    .FirstOrDefault(p => p.audio != null && p.audio.Contains("us.mp3"))?.text
+                    ?? entry.phonetics?.FirstOrDefault(p => !string.IsNullOrEmpty(p.text))?.text
+                    ?? "";
+                //string pronunciation = entry.phonetics?.FirstOrDefault(p => !string.IsNullOrEmpty(p.text))?.text ?? "";
+
                 // Lấy URL âm thanh phát âm
-                string audioUrl = entry.phonetics?.FirstOrDefault(p => !string.IsNullOrEmpty(p.audio))?.audio ?? "";
+                string audioUrl = entry.phonetics?
+                    .FirstOrDefault(p => p.audio != null && p.audio.Contains("us.mp3"))?.audio
+                    ?? entry.phonetics?.FirstOrDefault(p => !string.IsNullOrEmpty(p.audio))?.audio
+                    ?? "";
+
+                //string audioUrl = entry.phonetics?.FirstOrDefault(p => !string.IsNullOrEmpty(p.audio))?.audio ?? "";
                 // Lấy nghĩa của từ
                 string meaning = entry.meanings?
                     .FirstOrDefault()?

@@ -1,5 +1,4 @@
-﻿// 🔹 HomeControl.cs (cập nhật đầy đủ chức năng tìm kiếm)
-using System;
+﻿using System;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,6 +15,9 @@ namespace WordVaultAppMVC.Views.Controls
         private Label lblMeaning;
         private Button btnSearch;
         private Button btnPlayAudio;
+        private Button btnAddFavorite;
+        private Button btnAddTopic;
+        private WordDetails currentWord;
 
         public HomeControl()
         {
@@ -51,7 +53,7 @@ namespace WordVaultAppMVC.Views.Controls
                 Text = "Phát âm:",
                 Font = new System.Drawing.Font("Segoe UI", 11F),
                 Location = new System.Drawing.Point(0, 10),
-                Size = new System.Drawing.Size(400, 25)
+                Size = new System.Drawing.Size(600, 25)
             };
 
             lblMeaning = new Label
@@ -59,7 +61,7 @@ namespace WordVaultAppMVC.Views.Controls
                 Text = "Nghĩa tiếng Việt:",
                 Font = new System.Drawing.Font("Segoe UI", 11F),
                 Location = new System.Drawing.Point(0, 50),
-                Size = new System.Drawing.Size(400, 80)
+                Size = new System.Drawing.Size(600, 80)
             };
 
             btnPlayAudio = new Button
@@ -71,11 +73,31 @@ namespace WordVaultAppMVC.Views.Controls
             };
             btnPlayAudio.Click += BtnPlayAudio_Click;
 
+            btnAddFavorite = new Button
+            {
+                Text = "⭐ Yêu thích",
+                Font = new System.Drawing.Font("Segoe UI", 10F),
+                Size = new System.Drawing.Size(100, 45),
+                Location = new System.Drawing.Point(160, 140)
+            };
+            btnAddFavorite.Click += BtnAddFavorite_Click;
+
+            btnAddTopic = new Button
+            {
+                Text = "📚 Thêm vào chủ đề",
+                Font = new System.Drawing.Font("Segoe UI", 10F),
+                Size = new System.Drawing.Size(160, 45),
+                Location = new System.Drawing.Point(270, 140)
+            };
+            btnAddTopic.Click += BtnAddTopic_Click;
+
             pnlSearch.Controls.Add(txtSearch);
             pnlSearch.Controls.Add(btnSearch);
             pnlResult.Controls.Add(lblPronunciation);
             pnlResult.Controls.Add(lblMeaning);
             pnlResult.Controls.Add(btnPlayAudio);
+            pnlResult.Controls.Add(btnAddFavorite);
+            pnlResult.Controls.Add(btnAddTopic);
 
             this.Controls.Add(pnlResult);
             this.Controls.Add(pnlSearch);
@@ -106,6 +128,7 @@ namespace WordVaultAppMVC.Views.Controls
                 result.Meaning = await DictionaryApiClient.TranslateToVietnamese(result.Meaning);
                 lblPronunciation.Text = "Phát âm: " + result.Pronunciation;
                 lblMeaning.Text = "Nghĩa tiếng Việt: " + result.Meaning;
+                currentWord = result;
                 SaveWordToDatabase(result);
             }
             else
@@ -170,6 +193,41 @@ namespace WordVaultAppMVC.Views.Controls
                 }
             }
             return audioUrl;
+        }
+
+        private void BtnAddFavorite_Click(object sender, EventArgs e)
+        {
+            if (currentWord == null)
+            {
+                MessageBox.Show("Hãy tìm kiếm từ trước khi thêm vào Yêu thích.");
+                return;
+            }
+            using (var conn = DatabaseContext.GetConnection())
+            {
+                conn.Open();
+                var cmd = new SqlCommand("INSERT INTO FavoriteWords (WordId) SELECT Id FROM Vocabulary WHERE Word = @Word", conn);
+                cmd.Parameters.AddWithValue("@Word", currentWord.Word);
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("⭐ Đã thêm vào Yêu thích!");
+                }
+                catch
+                {
+                    MessageBox.Show("Từ này đã có trong danh sách yêu thích.");
+                }
+            }
+        }
+
+        private void BtnAddTopic_Click(object sender, EventArgs e)
+        {
+            if (currentWord == null)
+            {
+                MessageBox.Show("Hãy tìm kiếm từ trước khi thêm vào chủ đề.");
+                return;
+            }
+            var form = new AddToTopicForm(currentWord.Word);
+            form.ShowDialog();
         }
     }
 }

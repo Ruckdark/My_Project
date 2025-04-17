@@ -101,7 +101,7 @@ namespace WordVaultAppMVC.Controllers
             }
         }
 
-        private void UpdateLearningStatus(string wordId, string status)
+        public void UpdateLearningStatus(string wordId, string status)
         {
             var existingStatus = _learningStatusRepository.GetLearningStatusByWordId(wordId);
             if (existingStatus != null)
@@ -195,6 +195,7 @@ namespace WordVaultAppMVC.Controllers
         }
     }
 }
+
 
 QuizController:
 using System;
@@ -1049,9 +1050,20 @@ namespace WordVaultAppMVC.Helpers
                 var entry = root[0];
 
                 // Lấy phát âm
-                string pronunciation = entry.phonetics?.FirstOrDefault(p => !string.IsNullOrEmpty(p.text))?.text ?? "";
+                // Ưu tiên phát âm US
+                string pronunciation = entry.phonetics?
+                    .FirstOrDefault(p => p.audio != null && p.audio.Contains("us.mp3"))?.text
+                    ?? entry.phonetics?.FirstOrDefault(p => !string.IsNullOrEmpty(p.text))?.text
+                    ?? "";
+                //string pronunciation = entry.phonetics?.FirstOrDefault(p => !string.IsNullOrEmpty(p.text))?.text ?? "";
+
                 // Lấy URL âm thanh phát âm
-                string audioUrl = entry.phonetics?.FirstOrDefault(p => !string.IsNullOrEmpty(p.audio))?.audio ?? "";
+                string audioUrl = entry.phonetics?
+                    .FirstOrDefault(p => p.audio != null && p.audio.Contains("us.mp3"))?.audio
+                    ?? entry.phonetics?.FirstOrDefault(p => !string.IsNullOrEmpty(p.audio))?.audio
+                    ?? "";
+
+                //string audioUrl = entry.phonetics?.FirstOrDefault(p => !string.IsNullOrEmpty(p.audio))?.audio ?? "";
                 // Lấy nghĩa của từ
                 string meaning = entry.meanings?
                     .FirstOrDefault()?
@@ -1139,6 +1151,7 @@ namespace WordVaultAppMVC.Helpers
         }
     }
 }
+
 
 
 LearningStatus:
@@ -1278,309 +1291,250 @@ namespace WordVaultAppMVC.Services
 }
 
 AddTopicForm:
+// AddToTopicForm.cs (có thêm tạo topic mới)
 using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using WordVaultAppMVC.Data;
 
 namespace WordVaultAppMVC.Views
 {
-    public partial class AddTopicForm : Form
+    public partial class AddToTopicForm : Form
     {
-        private List<string> vocabularyList = new List<string>();
-        private TextBox txtNewVocabulary;
-        private ListBox lstVocabulary;
+        private readonly string word;
 
-        public AddTopicForm()
+        public AddToTopicForm(string word)
         {
             InitializeComponent();
+            this.word = word;
+            lblWord.Text = $"Từ: {word}";
+            LoadTopics();
         }
 
-        // Sự kiện khi người dùng nhấn nút "Thêm từ vựng"
-        private void btnAddVocabulary_Click(object sender, EventArgs e)
+        private void LoadTopics()
         {
-            string newVocabulary = txtNewVocabulary.Text.Trim();
-            if (!string.IsNullOrEmpty(newVocabulary))
+            cboTopics.Items.Clear();
+            using (var conn = DatabaseContext.GetConnection())
             {
-                vocabularyList.Add(newVocabulary);
-                lstVocabulary.Items.Add(newVocabulary);
-                txtNewVocabulary.Clear();
+                conn.Open();
+                using (var cmd = new SqlCommand("SELECT Id, Name FROM Topics", conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        cboTopics.Items.Add(new ComboBoxItem(reader.GetInt32(0), reader.GetString(1)));
+                    }
+                }
+            }
+            if (cboTopics.Items.Count > 0)
+                cboTopics.SelectedIndex = 0;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (cboTopics.SelectedItem is ComboBoxItem selectedTopic)
+            {
+                AddWordToTopic(selectedTopic.Id);
             }
             else
             {
-                MessageBox.Show("Vui lòng nhập từ vựng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng chọn một chủ đề.");
             }
         }
 
-        // Sự kiện khi người dùng nhấn nút "Lưu chủ đề"
-        private void btnSave_Click(object sender, EventArgs e)
+        private void AddWordToTopic(int topicId)
         {
-            string topicName = txtTopicName.Text.Trim();
-            if (string.IsNullOrEmpty(topicName))
+            using (var conn = DatabaseContext.GetConnection())
             {
-                MessageBox.Show("Vui lòng nhập tên chủ đề.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                conn.Open();
 
-            if (vocabularyList.Count == 0)
-            {
-                MessageBox.Show("Vui lòng thêm ít nhất một từ vựng vào chủ đề.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                var getWordIdCmd = new SqlCommand("SELECT Id FROM Vocabulary WHERE Word = @Word", conn);
+                getWordIdCmd.Parameters.AddWithValue("@Word", word);
+                var wordIdObj = getWordIdCmd.ExecuteScalar();
 
-            // Lưu chủ đề và từ vựng vào cơ sở dữ liệu.
-            SaveTopicToDatabase(topicName, vocabularyList);
-
-            MessageBox.Show("Chủ đề và từ vựng đã được lưu thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close(); // Đóng form sau khi lưu thành công.
-        }
-
-        // Cài đặt phương thức lưu chủ đề và danh sách từ vựng vào cơ sở dữ liệu
-        private void SaveTopicToDatabase(string topicName, List<string> vocabularyList)
-        {
-            using (var connection = DatabaseContext.GetConnection())
-            {
-                connection.Open();
-                using (SqlTransaction transaction = connection.BeginTransaction())
+                if (wordIdObj == null)
                 {
-                    try
-                    {
-                        int topicId = 0;
-                        // Chèn chủ đề mới và lấy Id chủ đề
-                        string insertTopicQuery = "INSERT INTO Topics (Name) OUTPUT INSERTED.Id VALUES (@Name)";
-                        using (SqlCommand cmdTopic = new SqlCommand(insertTopicQuery, connection, transaction))
-                        {
-                            cmdTopic.Parameters.AddWithValue("@Name", topicName);
-                            topicId = (int)cmdTopic.ExecuteScalar();
-                        }
+                    MessageBox.Show("Không tìm thấy từ này trong cơ sở dữ liệu.");
+                    return;
+                }
 
-                        // Với mỗi từ vựng, kiểm tra, chèn (nếu cần), và lưu record vào bảng liên kết VocabularyTopic
-                        foreach (var word in vocabularyList)
-                        {
-                            int vocabularyId = 0;
-                            // Kiểm tra xem từ vựng đã tồn tại chưa
-                            string checkVocabularyQuery = "SELECT Id FROM Vocabulary WHERE Word = @Word";
-                            using (SqlCommand cmdCheck = new SqlCommand(checkVocabularyQuery, connection, transaction))
-                            {
-                                cmdCheck.Parameters.AddWithValue("@Word", word);
-                                var result = cmdCheck.ExecuteScalar();
-                                if (result != null)
-                                {
-                                    vocabularyId = (int)result;
-                                }
-                            }
+                int wordId = Convert.ToInt32(wordIdObj);
 
-                            // Nếu chưa tồn tại, chèn mới vào bảng Vocabulary (với các thông tin còn lại rỗng hoặc mặc định)
-                            if (vocabularyId == 0)
-                            {
-                                string insertVocabularyQuery = "INSERT INTO Vocabulary (Word, Meaning, Pronunciation, AudioUrl) OUTPUT INSERTED.Id VALUES (@Word, '', '', '')";
-                                using (SqlCommand cmdInsertVocab = new SqlCommand(insertVocabularyQuery, connection, transaction))
-                                {
-                                    cmdInsertVocab.Parameters.AddWithValue("@Word", word);
-                                    vocabularyId = (int)cmdInsertVocab.ExecuteScalar();
-                                }
-                            }
+                var insertCmd = new SqlCommand("INSERT INTO VocabularyTopic (VocabularyId, TopicId) VALUES (@WordId, @TopicId)", conn);
+                insertCmd.Parameters.AddWithValue("@WordId", wordId);
+                insertCmd.Parameters.AddWithValue("@TopicId", topicId);
 
-                            // Chèn record vào bảng liên kết VocabularyTopic
-                            string insertVocabularyTopicQuery = "INSERT INTO VocabularyTopic (VocabularyId, TopicId) VALUES (@VocabularyId, @TopicId)";
-                            using (SqlCommand cmdVT = new SqlCommand(insertVocabularyTopicQuery, connection, transaction))
-                            {
-                                cmdVT.Parameters.AddWithValue("@VocabularyId", vocabularyId);
-                                cmdVT.Parameters.AddWithValue("@TopicId", topicId);
-                                cmdVT.ExecuteNonQuery();
-                            }
-                        }
-
-                        transaction.Commit();
-                    }
-                    catch (Exception ex)
-                    {
-                        transaction.Rollback();
-                        MessageBox.Show("Lỗi khi lưu chủ đề và từ vựng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                try
+                {
+                    insertCmd.ExecuteNonQuery();
+                    MessageBox.Show("📚 Đã thêm vào chủ đề thành công!");
+                    this.Close();
+                }
+                catch (SqlException)
+                {
+                    MessageBox.Show("Từ này đã có trong chủ đề này rồi.");
                 }
             }
         }
 
-        // Sự kiện khi người dùng nhấn nút "Hủy"
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void btnCreateTopic_Click(object sender, EventArgs e)
         {
-            this.Close(); // Đóng form mà không lưu.
-        }
-
-        // Sự kiện khi người dùng nhấn "Thêm chủ đề mới"
-        private void btnAddTopic_Click(object sender, EventArgs e)
-        {
-            // Reset lại form để thêm chủ đề mới
-            string topicName = txtTopicName.Text.Trim();
-            if (string.IsNullOrEmpty(topicName))
+            string newTopic = txtNewTopic.Text.Trim();
+            if (string.IsNullOrEmpty(newTopic))
             {
-                MessageBox.Show("Vui lòng nhập tên chủ đề.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng nhập tên chủ đề mới.");
                 return;
             }
 
-            lstVocabulary.Items.Clear();
-            vocabularyList.Clear();
-            MessageBox.Show($"Chủ đề \"{topicName}\" đã được thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            using (var conn = DatabaseContext.GetConnection())
+            {
+                conn.Open();
+                var checkCmd = new SqlCommand("SELECT COUNT(*) FROM Topics WHERE Name = @Name", conn);
+                checkCmd.Parameters.AddWithValue("@Name", newTopic);
+                int count = (int)checkCmd.ExecuteScalar();
+                if (count > 0)
+                {
+                    MessageBox.Show("Chủ đề này đã tồn tại.");
+                    return;
+                }
+
+                var insertCmd = new SqlCommand("INSERT INTO Topics (Name) VALUES (@Name)", conn);
+                insertCmd.Parameters.AddWithValue("@Name", newTopic);
+                insertCmd.ExecuteNonQuery();
+            }
+
+            LoadTopics();
+            cboTopics.SelectedIndex = cboTopics.FindStringExact(newTopic);
+            txtNewTopic.Clear();
+            MessageBox.Show("✅ Đã tạo chủ đề mới.");
         }
+    }
+
+    public class ComboBoxItem
+    {
+        public int Id { get; }
+        public string Name { get; }
+
+        public ComboBoxItem(int id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
+
+        public override string ToString() => Name;
     }
 }
 
 
-AddTopicForm.Designer.cs:
-using System.Windows.Forms;
 
+AddTopicForm.Designer.cs:
+// AddToTopicForm.Designer.cs
 namespace WordVaultAppMVC.Views
 {
-    partial class AddTopicForm
+    partial class AddToTopicForm
     {
         private System.ComponentModel.IContainer components = null;
-
-        // Panels
-        private System.Windows.Forms.Panel pnlHeader;
-        private System.Windows.Forms.Panel pnlContentArea;
-        private System.Windows.Forms.Panel pnlFooter;
-
-        // Controls
-        private System.Windows.Forms.Label lblAddTopicTitle;
-        private System.Windows.Forms.TextBox txtTopicName;
-        private System.Windows.Forms.Button btnAddTopic;
-        private System.Windows.Forms.Label lblTopicName;
-        private System.Windows.Forms.Label lblDescription;
-        private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.Label lblWord;
+        private System.Windows.Forms.ComboBox cboTopics;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Label lblNewTopic;
+        private System.Windows.Forms.TextBox txtNewTopic;
+        private System.Windows.Forms.Button btnCreateTopic;
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null)) components.Dispose();
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
             base.Dispose(disposing);
         }
 
         private void InitializeComponent()
         {
-            this.txtNewVocabulary = new TextBox();
-            this.lstVocabulary = new ListBox();
-            this.pnlHeader = new System.Windows.Forms.Panel();
-            this.lblAddTopicTitle = new System.Windows.Forms.Label();
-            this.pnlContentArea = new System.Windows.Forms.Panel();
-            this.lblTopicName = new System.Windows.Forms.Label();
-            this.txtTopicName = new System.Windows.Forms.TextBox();
-            this.lblDescription = new System.Windows.Forms.Label();
-            this.txtDescription = new System.Windows.Forms.TextBox();
-            this.btnAddTopic = new System.Windows.Forms.Button();
-            this.pnlFooter = new System.Windows.Forms.Panel();
-            this.pnlHeader.SuspendLayout();
-            this.pnlContentArea.SuspendLayout();
+            this.lblWord = new System.Windows.Forms.Label();
+            this.cboTopics = new System.Windows.Forms.ComboBox();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.lblNewTopic = new System.Windows.Forms.Label();
+            this.txtNewTopic = new System.Windows.Forms.TextBox();
+            this.btnCreateTopic = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // pnlHeader
-            // 
-            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.pnlHeader.Controls.Add(this.lblAddTopicTitle);
-            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
-            this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(534, 60);
-            this.pnlHeader.TabIndex = 2;
-            // 
-            // lblAddTopicTitle
-            // 
-            this.lblAddTopicTitle.AutoSize = true;
-            this.lblAddTopicTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.lblAddTopicTitle.ForeColor = System.Drawing.Color.White;
-            this.lblAddTopicTitle.Location = new System.Drawing.Point(20, 15);
-            this.lblAddTopicTitle.Name = "lblAddTopicTitle";
-            this.lblAddTopicTitle.Size = new System.Drawing.Size(483, 45);
-            this.lblAddTopicTitle.TabIndex = 0;
-            this.lblAddTopicTitle.Text = "📝 Thêm Chủ Đề Từ Vựng Mới";
-            // 
-            // pnlContentArea
-            // 
-            this.pnlContentArea.Controls.Add(this.lblTopicName);
-            this.pnlContentArea.Controls.Add(this.txtTopicName);
-            this.pnlContentArea.Controls.Add(this.lblDescription);
-            this.pnlContentArea.Controls.Add(this.txtDescription);
-            this.pnlContentArea.Controls.Add(this.btnAddTopic);
-            this.pnlContentArea.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContentArea.Location = new System.Drawing.Point(0, 60);
-            this.pnlContentArea.Name = "pnlContentArea";
-            this.pnlContentArea.Padding = new System.Windows.Forms.Padding(20);
-            this.pnlContentArea.Size = new System.Drawing.Size(534, 241);
-            this.pnlContentArea.TabIndex = 1;
-            // 
-            // lblTopicName
-            // 
-            this.lblTopicName.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.lblTopicName.Location = new System.Drawing.Point(0, 20);
-            this.lblTopicName.Name = "lblTopicName";
-            this.lblTopicName.Size = new System.Drawing.Size(400, 25);
-            this.lblTopicName.TabIndex = 0;
-            this.lblTopicName.Text = "Tên chủ đề:";
-            // 
-            // txtTopicName
-            // 
-            this.txtTopicName.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtTopicName.Location = new System.Drawing.Point(0, 50);
-            this.txtTopicName.Name = "txtTopicName";
-            this.txtTopicName.Size = new System.Drawing.Size(400, 37);
-            this.txtTopicName.TabIndex = 1;
-            // 
-            // lblDescription
-            // 
-            this.lblDescription.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.lblDescription.Location = new System.Drawing.Point(0, 90);
-            this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(400, 25);
-            this.lblDescription.TabIndex = 2;
-            this.lblDescription.Text = "Mô tả: ";
-            // 
-            // txtDescription
-            // 
-            this.txtDescription.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtDescription.Location = new System.Drawing.Point(0, 120);
-            this.txtDescription.Multiline = true;
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(400, 50);
-            this.txtDescription.TabIndex = 3;
-            // 
-            // btnAddTopic
-            // 
-            this.btnAddTopic.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnAddTopic.Location = new System.Drawing.Point(0, 180);
-            this.btnAddTopic.Name = "btnAddTopic";
-            this.btnAddTopic.Size = new System.Drawing.Size(140, 45);
-            this.btnAddTopic.TabIndex = 4;
-            this.btnAddTopic.Text = "Thêm Chủ Đề";
-            this.btnAddTopic.Click += new System.EventHandler(this.btnAddTopic_Click);
-            // 
-            // pnlFooter
-            // 
-            this.pnlFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
-            this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlFooter.Location = new System.Drawing.Point(0, 301);
-            this.pnlFooter.Name = "pnlFooter";
-            this.pnlFooter.Size = new System.Drawing.Size(534, 30);
-            this.pnlFooter.TabIndex = 3;
-            // 
-            // AddTopicForm
-            // 
-            this.ClientSize = new System.Drawing.Size(534, 331);
-            this.Controls.Add(this.pnlContentArea);
-            this.Controls.Add(this.pnlHeader);
-            this.Controls.Add(this.pnlFooter);
-            this.Name = "AddTopicForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Thêm Chủ Đề Từ Vựng";
-            this.pnlHeader.ResumeLayout(false);
-            this.pnlHeader.PerformLayout();
-            this.pnlContentArea.ResumeLayout(false);
-            this.pnlContentArea.PerformLayout();
-            this.ResumeLayout(false);
 
+            // lblWord
+            this.lblWord.AutoSize = true;
+            this.lblWord.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.lblWord.Location = new System.Drawing.Point(20, 20);
+            this.lblWord.Name = "lblWord";
+            this.lblWord.Size = new System.Drawing.Size(100, 28);
+            this.lblWord.TabIndex = 0;
+            this.lblWord.Text = "Từ: (word)";
+
+            // cboTopics
+            this.cboTopics.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTopics.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.cboTopics.Location = new System.Drawing.Point(20, 60);
+            this.cboTopics.Name = "cboTopics";
+            this.cboTopics.Size = new System.Drawing.Size(300, 33);
+            this.cboTopics.TabIndex = 1;
+
+            // btnAdd
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnAdd.Location = new System.Drawing.Point(20, 110);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(150, 40);
+            this.btnAdd.TabIndex = 2;
+            this.btnAdd.Text = "Thêm vào chủ đề";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+
+            // lblNewTopic
+            this.lblNewTopic.AutoSize = true;
+            this.lblNewTopic.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblNewTopic.Location = new System.Drawing.Point(20, 170);
+            this.lblNewTopic.Name = "lblNewTopic";
+            this.lblNewTopic.Size = new System.Drawing.Size(134, 23);
+            this.lblNewTopic.TabIndex = 3;
+            this.lblNewTopic.Text = "Tạo chủ đề mới:";
+
+            // txtNewTopic
+            this.txtNewTopic.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtNewTopic.Location = new System.Drawing.Point(20, 200);
+            this.txtNewTopic.Name = "txtNewTopic";
+            this.txtNewTopic.Size = new System.Drawing.Size(200, 30);
+            this.txtNewTopic.TabIndex = 4;
+
+            // btnCreateTopic
+            this.btnCreateTopic.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnCreateTopic.Location = new System.Drawing.Point(230, 198);
+            this.btnCreateTopic.Name = "btnCreateTopic";
+            this.btnCreateTopic.Size = new System.Drawing.Size(90, 32);
+            this.btnCreateTopic.TabIndex = 5;
+            this.btnCreateTopic.Text = "Tạo";
+            this.btnCreateTopic.UseVisualStyleBackColor = true;
+            this.btnCreateTopic.Click += new System.EventHandler(this.btnCreateTopic_Click);
+
+            // AddToTopicForm
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(360, 260);
+            this.Controls.Add(this.lblWord);
+            this.Controls.Add(this.cboTopics);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.lblNewTopic);
+            this.Controls.Add(this.txtNewTopic);
+            this.Controls.Add(this.btnCreateTopic);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "AddToTopicForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Thêm vào Chủ đề";
+            this.ResumeLayout(false);
+            this.PerformLayout();
         }
     }
 }
+
 
 DailyReviewForm:
 using System;
@@ -3168,7 +3122,6 @@ namespace WordVaultAppMVC.Views
 }
 
 HomeControl.cs:
-// 🔹 HomeControl.cs (cập nhật đầy đủ chức năng tìm kiếm)
 using System;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
@@ -3186,6 +3139,9 @@ namespace WordVaultAppMVC.Views.Controls
         private Label lblMeaning;
         private Button btnSearch;
         private Button btnPlayAudio;
+        private Button btnAddFavorite;
+        private Button btnAddTopic;
+        private WordDetails currentWord;
 
         public HomeControl()
         {
@@ -3221,7 +3177,7 @@ namespace WordVaultAppMVC.Views.Controls
                 Text = "Phát âm:",
                 Font = new System.Drawing.Font("Segoe UI", 11F),
                 Location = new System.Drawing.Point(0, 10),
-                Size = new System.Drawing.Size(400, 25)
+                Size = new System.Drawing.Size(600, 25)
             };
 
             lblMeaning = new Label
@@ -3229,7 +3185,7 @@ namespace WordVaultAppMVC.Views.Controls
                 Text = "Nghĩa tiếng Việt:",
                 Font = new System.Drawing.Font("Segoe UI", 11F),
                 Location = new System.Drawing.Point(0, 50),
-                Size = new System.Drawing.Size(400, 80)
+                Size = new System.Drawing.Size(600, 80)
             };
 
             btnPlayAudio = new Button
@@ -3241,11 +3197,31 @@ namespace WordVaultAppMVC.Views.Controls
             };
             btnPlayAudio.Click += BtnPlayAudio_Click;
 
+            btnAddFavorite = new Button
+            {
+                Text = "⭐ Yêu thích",
+                Font = new System.Drawing.Font("Segoe UI", 10F),
+                Size = new System.Drawing.Size(100, 45),
+                Location = new System.Drawing.Point(160, 140)
+            };
+            btnAddFavorite.Click += BtnAddFavorite_Click;
+
+            btnAddTopic = new Button
+            {
+                Text = "📚 Thêm vào chủ đề",
+                Font = new System.Drawing.Font("Segoe UI", 10F),
+                Size = new System.Drawing.Size(160, 45),
+                Location = new System.Drawing.Point(270, 140)
+            };
+            btnAddTopic.Click += BtnAddTopic_Click;
+
             pnlSearch.Controls.Add(txtSearch);
             pnlSearch.Controls.Add(btnSearch);
             pnlResult.Controls.Add(lblPronunciation);
             pnlResult.Controls.Add(lblMeaning);
             pnlResult.Controls.Add(btnPlayAudio);
+            pnlResult.Controls.Add(btnAddFavorite);
+            pnlResult.Controls.Add(btnAddTopic);
 
             this.Controls.Add(pnlResult);
             this.Controls.Add(pnlSearch);
@@ -3276,6 +3252,7 @@ namespace WordVaultAppMVC.Views.Controls
                 result.Meaning = await DictionaryApiClient.TranslateToVietnamese(result.Meaning);
                 lblPronunciation.Text = "Phát âm: " + result.Pronunciation;
                 lblMeaning.Text = "Nghĩa tiếng Việt: " + result.Meaning;
+                currentWord = result;
                 SaveWordToDatabase(result);
             }
             else
@@ -3341,28 +3318,192 @@ namespace WordVaultAppMVC.Views.Controls
             }
             return audioUrl;
         }
+
+        private void BtnAddFavorite_Click(object sender, EventArgs e)
+        {
+            if (currentWord == null)
+            {
+                MessageBox.Show("Hãy tìm kiếm từ trước khi thêm vào Yêu thích.");
+                return;
+            }
+            using (var conn = DatabaseContext.GetConnection())
+            {
+                conn.Open();
+                var cmd = new SqlCommand("INSERT INTO FavoriteWords (WordId) SELECT Id FROM Vocabulary WHERE Word = @Word", conn);
+                cmd.Parameters.AddWithValue("@Word", currentWord.Word);
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("⭐ Đã thêm vào Yêu thích!");
+                }
+                catch
+                {
+                    MessageBox.Show("Từ này đã có trong danh sách yêu thích.");
+                }
+            }
+        }
+
+        private void BtnAddTopic_Click(object sender, EventArgs e)
+        {
+            if (currentWord == null)
+            {
+                MessageBox.Show("Hãy tìm kiếm từ trước khi thêm vào chủ đề.");
+                return;
+            }
+            var form = new AddToTopicForm(currentWord.Word);
+            form.ShowDialog();
+        }
     }
 }
 
+
+
 TopicVocabularyControl:
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Windows.Forms;
-using WordVaultAppMVC.Views;
+using WordVaultAppMVC.Data;
+using WordVaultAppMVC.Models;
 
 namespace WordVaultAppMVC.Views.Controls
 {
     public class TopicVocabularyControl : UserControl
     {
-        public TopicVocabularyControl(string topic)
+        private ComboBox cboTopics;
+        private ListView lstWords;
+        private TextBox txtNewWord;
+        private Button btnAdd;
+
+        public TopicVocabularyControl(string defaultTopic = null)
+        {
+            InitializeComponent();
+            LoadTopics();
+
+            if (!string.IsNullOrEmpty(defaultTopic))
+                cboTopics.SelectedItem = defaultTopic;
+        }
+
+        private void InitializeComponent()
         {
             this.Dock = DockStyle.Fill;
-            var form = new TopicVocabularyForm(topic)
+
+            cboTopics = new ComboBox { Location = new System.Drawing.Point(20, 20), Width = 200, DropDownStyle = ComboBoxStyle.DropDownList };
+            cboTopics.SelectedIndexChanged += (s, e) => LoadWordsByTopic();
+
+            txtNewWord = new TextBox { Location = new System.Drawing.Point(240, 20), Width = 200 };
+            btnAdd = new Button { Text = "➕ Thêm từ", Location = new System.Drawing.Point(460, 18), Width = 100 };
+            btnAdd.Click += BtnAdd_Click;
+
+            lstWords = new ListView
             {
-                TopLevel = false,
-                FormBorderStyle = FormBorderStyle.None,
-                Dock = DockStyle.Fill
+                View = View.Details,
+                Location = new System.Drawing.Point(20, 70),
+                Size = new System.Drawing.Size(540, 300),
+                FullRowSelect = true
             };
-            this.Controls.Add(form);
-            form.Show();
+            lstWords.Columns.Add("Từ vựng", 160);
+            lstWords.Columns.Add("Phát âm", 150);
+            lstWords.Columns.Add("Nghĩa tiếng Việt", 220);
+
+            this.Controls.AddRange(new Control[] { cboTopics, txtNewWord, btnAdd, lstWords });
+        }
+
+        private void LoadTopics()
+        {
+            cboTopics.Items.Clear();
+            using (var conn = DatabaseContext.GetConnection())
+            {
+                conn.Open();
+                var cmd = new SqlCommand("SELECT Name FROM Topics", conn);
+                var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    cboTopics.Items.Add(reader.GetString(0));
+                }
+            }
+            if (cboTopics.Items.Count > 0) cboTopics.SelectedIndex = 0;
+        }
+
+        private void LoadWordsByTopic()
+        {
+            lstWords.Items.Clear();
+            string topic = cboTopics.SelectedItem?.ToString();
+            if (string.IsNullOrEmpty(topic)) return;
+
+            using (var conn = DatabaseContext.GetConnection())
+            {
+                conn.Open();
+                var sql = @"SELECT V.Word, V.Pronunciation, V.Meaning
+                             FROM Vocabulary V
+                             JOIN VocabularyTopic VT ON V.Id = VT.VocabularyId
+                             JOIN Topics T ON T.Id = VT.TopicId
+                             WHERE T.Name = @Topic";
+                var cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@Topic", topic);
+                var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    var item = new ListViewItem(reader.GetString(0));
+                    item.SubItems.Add(reader.IsDBNull(1) ? "" : reader.GetString(1));
+                    item.SubItems.Add(reader.IsDBNull(2) ? "" : reader.GetString(2));
+                    lstWords.Items.Add(item);
+                }
+            }
+        }
+
+        private void BtnAdd_Click(object sender, EventArgs e)
+        {
+            string word = txtNewWord.Text.Trim();
+            string topic = cboTopics.SelectedItem?.ToString();
+            if (string.IsNullOrWhiteSpace(word) || string.IsNullOrEmpty(topic))
+            {
+                MessageBox.Show("Vui lòng nhập từ và chọn chủ đề.");
+                return;
+            }
+
+            int wordId = -1;
+            int topicId = -1;
+
+            using (var conn = DatabaseContext.GetConnection())
+            {
+                conn.Open();
+                // Lấy Id của từ (nếu có)
+                var cmd = new SqlCommand("SELECT Id FROM Vocabulary WHERE Word = @Word", conn);
+                cmd.Parameters.AddWithValue("@Word", word);
+                var result = cmd.ExecuteScalar();
+                if (result == null)
+                {
+                    MessageBox.Show("Từ chưa có trong cơ sở dữ liệu. Hãy tìm kiếm trước ở Home.");
+                    return;
+                }
+                wordId = (int)result;
+
+                cmd = new SqlCommand("SELECT Id FROM Topics WHERE Name = @Topic", conn);
+                cmd.Parameters.AddWithValue("@Topic", topic);
+                topicId = (int)(cmd.ExecuteScalar() ?? -1);
+
+                if (wordId == -1 || topicId == -1) return;
+
+                cmd = new SqlCommand("SELECT COUNT(*) FROM VocabularyTopic WHERE VocabularyId = @VId AND TopicId = @TId", conn);
+                cmd.Parameters.AddWithValue("@VId", wordId);
+                cmd.Parameters.AddWithValue("@TId", topicId);
+                int exists = (int)cmd.ExecuteScalar();
+                if (exists > 0)
+                {
+                    MessageBox.Show("Từ đã nằm trong chủ đề này.");
+                    return;
+                }
+
+                cmd = new SqlCommand("INSERT INTO VocabularyTopic (VocabularyId, TopicId) VALUES (@VId, @TId)", conn);
+                cmd.Parameters.AddWithValue("@VId", wordId);
+                cmd.Parameters.AddWithValue("@TId", topicId);
+                cmd.ExecuteNonQuery();
+            }
+
+            txtNewWord.Clear();
+            LoadWordsByTopic();
         }
     }
 }
@@ -3390,70 +3531,525 @@ namespace WordVaultAppMVC.Views.Controls
 }
 
 DailyReviewControl:
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Windows.Forms;
+using WordVaultAppMVC.Data;
+using WordVaultAppMVC.Models;
 
 namespace WordVaultAppMVC.Views.Controls
 {
     public class DailyReviewControl : UserControl
     {
+        private ComboBox cboTopics;
+        private NumericUpDown numWordCount;
+        private Button btnStart;
+        private Label lblWord;
+        private Label lblMeaning;
+        private Label lblPronunciation;
+        private Button btnNext;
+
+        private List<WordDetails> currentWordList = new List<WordDetails>();
+        private int currentIndex = -1;
+
         public DailyReviewControl()
         {
+            InitializeComponent();
+            LoadTopics();
+        }
+
+        private void InitializeComponent()
+        {
             this.Dock = DockStyle.Fill;
-            var form = new DailyReviewForm()
+            cboTopics = new ComboBox { Location = new System.Drawing.Point(20, 20), Width = 200 };
+            numWordCount = new NumericUpDown { Location = new System.Drawing.Point(240, 20), Width = 80, Minimum = 1, Maximum = 100, Value = 5 };
+            btnStart = new Button { Text = "Bắt đầu học", Location = new System.Drawing.Point(340, 20) };
+            btnStart.Click += BtnStart_Click;
+            lblWord = new Label { Text = "Từ:", Font = new System.Drawing.Font("Segoe UI", 16F), Location = new System.Drawing.Point(20, 80), AutoSize = true };
+            lblPronunciation = new Label { Text = "Phát âm:", Location = new System.Drawing.Point(20, 120), AutoSize = true };
+            lblMeaning = new Label { Text = "Nghĩa:", Location = new System.Drawing.Point(20, 160), AutoSize = true };
+            btnNext = new Button { Text = "Tiếp theo", Location = new System.Drawing.Point(20, 200) };
+            btnNext.Click += BtnNext_Click;
+            this.Controls.AddRange(new Control[] { cboTopics, numWordCount, btnStart, lblWord, lblPronunciation, lblMeaning, btnNext });
+        }
+
+        private void LoadTopics()
+        {
+            using (var conn = DatabaseContext.GetConnection())
             {
-                TopLevel = false,
-                FormBorderStyle = FormBorderStyle.None,
-                Dock = DockStyle.Fill
-            };
-            this.Controls.Add(form);
-            form.Show();
+                conn.Open();
+                using (var cmd = new SqlCommand("SELECT Name FROM Topics", conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read()) cboTopics.Items.Add(reader.GetString(0));
+                }
+            }
+            if (cboTopics.Items.Count > 0) cboTopics.SelectedIndex = 0;
+        }
+
+        private void BtnStart_Click(object sender, EventArgs e)
+        {
+            var topic = cboTopics.SelectedItem?.ToString();
+            currentWordList = GetWordsByTopic(topic, (int)numWordCount.Value);
+            currentIndex = -1;
+            BtnNext_Click(null, null);
+        }
+
+        private List<WordDetails> GetWordsByTopic(string topic, int count)
+        {
+            var words = new List<WordDetails>();
+            using (var conn = DatabaseContext.GetConnection())
+            {
+                conn.Open();
+                string sql = @"SELECT TOP (@Count) V.Word, V.Pronunciation, V.Meaning
+                               FROM Vocabulary V
+                               JOIN VocabularyTopic VT ON V.Id = VT.VocabularyId
+                               JOIN Topics T ON T.Id = VT.TopicId
+                               WHERE T.Name = @Topic
+                               ORDER BY NEWID()";
+                using (var cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Count", count);
+                    cmd.Parameters.AddWithValue("@Topic", topic);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                            words.Add(new WordDetails { Word = reader.GetString(0), Pronunciation = reader.GetString(1), Meaning = reader.GetString(2) });
+                    }
+                }
+            }
+            return words;
+        }
+
+        private void BtnNext_Click(object sender, EventArgs e)
+        {
+            if (currentWordList.Count == 0) return;
+            currentIndex++;
+            if (currentIndex >= currentWordList.Count)
+            {
+                MessageBox.Show("Đã hết từ để học.");
+                return;
+            }
+            var w = currentWordList[currentIndex];
+            lblWord.Text = "Từ: " + w.Word;
+            lblPronunciation.Text = "Phát âm: " + w.Pronunciation;
+            lblMeaning.Text = "Nghĩa: " + w.Meaning;
         }
     }
 }
 
 ShuffleStudyControl:
+using System;
 using System.Windows.Forms;
+using WordVaultAppMVC.Services;
 
 namespace WordVaultAppMVC.Views.Controls
 {
     public class ShuffleStudyControl : UserControl
     {
+        private Label lblWord, lblRemainingWords;
+        private Button btnNextWord, btnShowMeaning, btnCheckMeaning;
+        private string currentWord;
+        private string currentWordId;
+        private int remainingWordsCount;
+        private readonly VocabularyService vocabularyService;
+
         public ShuffleStudyControl()
         {
             this.Dock = DockStyle.Fill;
-            var form = new ShuffleStudyForm()
+            vocabularyService = new VocabularyService();
+            remainingWordsCount = 10; // Số từ mặc định
+            InitializeComponent();
+            LoadNextWord();
+        }
+
+        private void InitializeComponent()
+        {
+            var pnlHeader = new Panel
             {
-                TopLevel = false,
-                FormBorderStyle = FormBorderStyle.None,
-                Dock = DockStyle.Fill
+                BackColor = System.Drawing.Color.FromArgb(52, 152, 219),
+                Dock = DockStyle.Top,
+                Height = 60
             };
-            this.Controls.Add(form);
-            form.Show();
+
+            var lblAppTitle = new Label
+            {
+                Text = "📚 Học Ngẫu Nhiên Từ Vựng",
+                Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold),
+                ForeColor = System.Drawing.Color.White,
+                AutoSize = true,
+                Location = new System.Drawing.Point(20, 15)
+            };
+            pnlHeader.Controls.Add(lblAppTitle);
+
+            var pnlMain = new Panel
+            {
+                Dock = DockStyle.Fill,
+                Padding = new Padding(20)
+            };
+
+            lblWord = new Label
+            {
+                Font = new System.Drawing.Font("Segoe UI", 14F),
+                Text = "Từ hiện tại:",
+                AutoSize = true,
+                Location = new System.Drawing.Point(0, 10)
+            };
+
+            btnCheckMeaning = new Button
+            {
+                Text = "🧠 Kiểm tra nghĩa",
+                Font = new System.Drawing.Font("Segoe UI", 10F),
+                Location = new System.Drawing.Point(60, 80),
+                Size = new System.Drawing.Size(120, 40)
+            };
+            btnCheckMeaning.Click += BtnCheckMeaning_Click;
+
+            btnShowMeaning = new Button
+            {
+                Text = "📖 Hiển thị nghĩa",
+                Font = new System.Drawing.Font("Segoe UI", 10F),
+                Location = new System.Drawing.Point(200, 80),
+                Size = new System.Drawing.Size(120, 40)
+            };
+            btnShowMeaning.Click += BtnShowMeaning_Click;
+
+            btnNextWord = new Button
+            {
+                Text = "➡️ Tiếp theo",
+                Font = new System.Drawing.Font("Segoe UI", 10F),
+                Location = new System.Drawing.Point(340, 80),
+                Size = new System.Drawing.Size(120, 40)
+            };
+            btnNextWord.Click += BtnNextWord_Click;
+
+            lblRemainingWords = new Label
+            {
+                Text = "Còn lại: 10 từ",
+                Font = new System.Drawing.Font("Segoe UI", 10F),
+                ForeColor = System.Drawing.Color.Gray,
+                AutoSize = true,
+                Location = new System.Drawing.Point(0, 150)
+            };
+
+            pnlMain.Controls.AddRange(new Control[]
+            {
+                lblWord,
+                btnCheckMeaning,
+                btnShowMeaning,
+                btnNextWord,
+                lblRemainingWords
+            });
+
+            this.Controls.Add(pnlMain);
+            this.Controls.Add(pnlHeader);
+        }
+
+        private void LoadNextWord()
+        {
+            if (remainingWordsCount <= 0)
+            {
+                lblWord.Text = "🎉 Bạn đã hoàn thành buổi học!";
+                lblRemainingWords.Text = "";
+                DisableButtons();
+                return;
+            }
+
+            currentWord = vocabularyService.GetRandomWord(out currentWordId);
+
+            if (string.IsNullOrEmpty(currentWord))
+            {
+                MessageBox.Show("Không tìm thấy từ nào để học. Vui lòng kiểm tra dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DisableButtons();
+                return;
+            }
+
+            lblWord.Text = $"Từ hiện tại: {currentWord}";
+            lblRemainingWords.Text = $"Còn lại: {remainingWordsCount} từ";
+        }
+
+        private void BtnNextWord_Click(object sender, EventArgs e)
+        {
+            remainingWordsCount--;
+            LoadNextWord();
+        }
+
+        private void BtnShowMeaning_Click(object sender, EventArgs e)
+        {
+            string meaning = vocabularyService.GetWordMeaning(currentWordId);
+            if (!string.IsNullOrEmpty(meaning))
+            {
+                MessageBox.Show($"📘 Nghĩa của từ '{currentWord}':\n\n{meaning}", "Nghĩa từ vựng", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Không có nghĩa nào được tìm thấy!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void BtnCheckMeaning_Click(object sender, EventArgs e)
+        {
+            string userInput = Microsoft.VisualBasic.Interaction.InputBox(
+                $"Bạn hãy nhập nghĩa của từ '{currentWord}':",
+                "📝 Kiểm tra Nghĩa",
+                ""
+            );
+
+            if (string.IsNullOrWhiteSpace(userInput))
+            {
+                MessageBox.Show("Vui lòng nhập nghĩa để kiểm tra!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string correctMeaning = vocabularyService.GetWordMeaning(currentWordId);
+
+            if (userInput.Trim().Equals(correctMeaning, StringComparison.OrdinalIgnoreCase))
+            {
+                MessageBox.Show("✅ Chính xác!", "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show($"❌ Sai rồi!\nNghĩa đúng là:\n\n{correctMeaning}", "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void DisableButtons()
+        {
+            btnNextWord.Enabled = false;
+            btnShowMeaning.Enabled = false;
+            btnCheckMeaning.Enabled = false;
         }
     }
 }
 
+
 QuizControl:
+// 🔹 QuizControl.cs (nâng cấp: luu dap an rieng, chon cau, nop bai tinh diem + luyện lại từ sai)
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
 using System.Windows.Forms;
+using WordVaultAppMVC.Data;
+using WordVaultAppMVC.Models;
+using WordVaultAppMVC.Controllers;
 
 namespace WordVaultAppMVC.Views.Controls
 {
     public class QuizControl : UserControl
     {
+        private ComboBox cboTopic;
+        private NumericUpDown numQuestionCount;
+        private Button btnStart;
+        private Label lblQuestion, lblProgress, lblFeedback;
+        private RadioButton[] rdoOptions;
+        private Button btnBack, btnNext, btnSubmitQuiz, btnRetryWrong;
+        private FlowLayoutPanel pnlJumpButtons, pnlMatrix;
+
+        private List<Vocabulary> questions;
+        private Dictionary<int, string> userAnswers = new Dictionary<int, string>();
+        private List<Vocabulary> wrongWords = new List<Vocabulary>();
+        private int currentIndex = 0;
+
         public QuizControl()
         {
+            InitializeComponent();
+            LoadTopics();
+        }
+
+        private void InitializeComponent()
+        {
             this.Dock = DockStyle.Fill;
-            var form = new QuizForm()
+
+            cboTopic = new ComboBox { Location = new System.Drawing.Point(20, 20), Width = 200 };
+            numQuestionCount = new NumericUpDown { Location = new System.Drawing.Point(240, 20), Minimum = 1, Maximum = 100, Value = 5 };
+            btnStart = new Button { Text = "Bắt đầu Quiz", Location = new System.Drawing.Point(360, 18) };
+            btnStart.Click += BtnStart_Click;
+
+            lblQuestion = new Label { Font = new System.Drawing.Font("Segoe UI", 14F), Location = new System.Drawing.Point(20, 70), AutoSize = true };
+            lblProgress = new Label { Font = new System.Drawing.Font("Segoe UI", 10F), Location = new System.Drawing.Point(20, 110), AutoSize = true };
+
+            rdoOptions = new RadioButton[4];
+            for (int i = 0; i < 4; i++)
             {
-                TopLevel = false,
-                FormBorderStyle = FormBorderStyle.None,
-                Dock = DockStyle.Fill
+                rdoOptions[i] = new RadioButton { Location = new System.Drawing.Point(40, 150 + i * 30), AutoSize = true };
+                rdoOptions[i].CheckedChanged += Option_CheckedChanged;
+                this.Controls.Add(rdoOptions[i]);
+            }
+
+            btnBack = new Button { Text = "⬅️ Quay lại", Location = new System.Drawing.Point(20, 280) };
+            btnBack.Click += (sender, args) => { SaveAnswer(); currentIndex = (currentIndex - 1 + questions.Count) % questions.Count; LoadQuestion(); };
+
+            btnNext = new Button { Text = "➡️ Tiếp", Location = new System.Drawing.Point(140, 280) };
+            btnNext.Click += (sender, args) => { SaveAnswer(); currentIndex = (currentIndex + 1) % questions.Count; LoadQuestion(); };
+
+            btnSubmitQuiz = new Button { Text = "📜 Nộp bài", Location = new System.Drawing.Point(260, 280) };
+            btnSubmitQuiz.Click += SubmitQuiz;
+
+            btnRetryWrong = new Button { Text = "🔁 Luyện lại từ sai", Location = new System.Drawing.Point(380, 280), Visible = false };
+            btnRetryWrong.Click += RetryWrongAnswers;
+
+            lblFeedback = new Label { Location = new System.Drawing.Point(20, 320), AutoSize = true };
+
+            pnlJumpButtons = new FlowLayoutPanel
+            {
+                Location = new System.Drawing.Point(20, 360),
+                Width = 500,
+                Height = 60,
+                AutoScroll = true,
+                WrapContents = false,
+                FlowDirection = FlowDirection.LeftToRight
             };
-            this.Controls.Add(form);
-            form.Show();
+
+            pnlMatrix = new FlowLayoutPanel
+            {
+                Location = new System.Drawing.Point(20, 430),
+                Width = 500,
+                Height = 60,
+                AutoScroll = true,
+                WrapContents = false,
+                FlowDirection = FlowDirection.LeftToRight
+            };
+
+            this.Controls.AddRange(new Control[]
+            {
+                cboTopic, numQuestionCount, btnStart, lblQuestion, lblProgress,
+                btnBack, btnNext, btnSubmitQuiz, btnRetryWrong, lblFeedback,
+                pnlJumpButtons, pnlMatrix
+            });
+        }
+
+        private void LoadTopics()
+        {
+            cboTopic.Items.Clear();
+            var topics = new TopicRepository().GetAllTopics();
+            foreach (var topic in topics)
+            {
+                cboTopic.Items.Add(topic.Name);
+            }
+            if (cboTopic.Items.Count > 0) cboTopic.SelectedIndex = 0;
+        }
+
+        private void BtnStart_Click(object sender, EventArgs e)
+        {
+            string selectedTopic = cboTopic.SelectedItem?.ToString();
+            if (string.IsNullOrEmpty(selectedTopic)) return;
+
+            int count = (int)numQuestionCount.Value;
+            questions = new VocabularyRepository()
+                .GetVocabularyByTopic(selectedTopic)
+                .OrderBy(_ => Guid.NewGuid()).Take(count).ToList();
+
+            currentIndex = 0;
+            userAnswers.Clear();
+            pnlJumpButtons.Controls.Clear();
+            pnlMatrix.Controls.Clear();
+            btnRetryWrong.Visible = false;
+            wrongWords.Clear();
+
+            for (int i = 0; i < questions.Count; i++)
+            {
+                var btn = new Button { Text = (i + 1).ToString(), Width = 40, Height = 30, Tag = i };
+                btn.Click += (s, ev) => { SaveAnswer(); currentIndex = (int)((Button)s).Tag; LoadQuestion(); };
+                pnlJumpButtons.Controls.Add(btn);
+            }
+
+            LoadQuestion();
+        }
+
+        private void LoadQuestion()
+        {
+            if (questions == null || questions.Count == 0 || currentIndex >= questions.Count) return;
+
+            var q = questions[currentIndex];
+            lblQuestion.Text = "Từ: " + q.Word;
+            lblProgress.Text = $"Câu {currentIndex + 1}/{questions.Count}";
+            lblFeedback.Text = "";
+
+            var repo = new VocabularyRepository();
+            var wrongAnswers = repo.GetAllVocabulary()
+                .Where(v => v.Word != q.Word && !string.IsNullOrEmpty(v.Meaning))
+                .Select(v => v.Meaning)
+                .Distinct()
+                .OrderBy(_ => Guid.NewGuid())
+                .Take(3)
+                .ToList();
+
+            wrongAnswers.Add(q.Meaning);
+            var allAnswers = wrongAnswers.OrderBy(_ => Guid.NewGuid()).Take(4).ToList();
+
+            for (int i = 0; i < rdoOptions.Length; i++)
+            {
+                rdoOptions[i].CheckedChanged -= Option_CheckedChanged;
+                rdoOptions[i].Text = i < allAnswers.Count ? allAnswers[i] : "";
+                rdoOptions[i].Checked = userAnswers.TryGetValue(currentIndex, out var saved) && saved == rdoOptions[i].Text;
+                rdoOptions[i].CheckedChanged += Option_CheckedChanged;
+            }
+        }
+
+        private void Option_CheckedChanged(object sender, EventArgs e)
+        {
+            SaveAnswer();
+        }
+
+        private void SaveAnswer()
+        {
+            var selected = rdoOptions.FirstOrDefault(r => r.Checked);
+            if (selected != null)
+            {
+                userAnswers[currentIndex] = selected.Text;
+            }
+        }
+
+        private void SubmitQuiz(object sender, EventArgs e)
+        {
+            int correct = 0;
+            wrongWords.Clear();
+
+            for (int i = 0; i < questions.Count; i++)
+            {
+                var word = questions[i];
+                var selectedAnswer = userAnswers.ContainsKey(i) ? userAnswers[i] : null;
+                bool isCorrect = selectedAnswer == word.Meaning;
+                if (isCorrect)
+                {
+                    correct++;
+                    new LearningController().UpdateLearningStatus(word.Id.ToString(), "Đã học");
+                }
+                else
+                {
+                    wrongWords.Add(word);
+                    new LearningController().UpdateLearningStatus(word.Id.ToString(), "Đang học");
+                }
+            }
+
+            MessageBox.Show($"✅ Hoàn thành Quiz.\nĐiểm: {correct}/{questions.Count} đúng.", "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            btnRetryWrong.Visible = wrongWords.Count > 0;
+        }
+
+        private void RetryWrongAnswers(object sender, EventArgs e)
+        {
+            questions = wrongWords;
+            currentIndex = 0;
+            userAnswers.Clear();
+            pnlJumpButtons.Controls.Clear();
+            pnlMatrix.Controls.Clear();
+
+            for (int i = 0; i < questions.Count; i++)
+            {
+                var btn = new Button { Text = (i + 1).ToString(), Width = 40, Height = 30, Tag = i };
+                btn.Click += (s, ev) => { SaveAnswer(); currentIndex = (int)((Button)s).Tag; LoadQuestion(); };
+                pnlJumpButtons.Controls.Add(btn);
+            }
+
+            LoadQuestion();
         }
     }
 }
+
+
+
 
 SettingsControl:
 using System.Windows.Forms;
