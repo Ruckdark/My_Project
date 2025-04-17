@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\source\\repos\\WordVaultAppMVC\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{21354C8C-FE34-4E05-B861-BD87189801BC}|WordVaultAppMVC.csproj|c:\\users\\admin\\source\\repos\\wordvaultappmvc\\views\\addtopicform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{21354C8C-FE34-4E05-B861-BD87189801BC}|WordVaultAppMVC.csproj|solutionrelative:views\\addtopicform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{21354C8C-FE34-4E05-B861-BD87189801BC}|WordVaultAppMVC.csproj|c:\\users\\admin\\source\\repos\\wordvaultappmvc\\views\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{21354C8C-FE34-4E05-B861-BD87189801BC}|WordVaultAppMVC.csproj|solutionrelative:views\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{21354C8C-FE34-4E05-B861-BD87189801BC}|WordVaultAppMVC.csproj|c:\\users\\admin\\source\\repos\\wordvaultappmvc\\views\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{21354C8C-FE34-4E05-B861-BD87189801BC}|WordVaultAppMVC.csproj|solutionrelative:views\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,15 +31,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "AddTopicForm.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\WordVaultAppMVC\\Views\\AddTopicForm.cs",
+              "RelativeDocumentMoniker": "Views\\AddTopicForm.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\WordVaultAppMVC\\Views\\AddTopicForm.cs",
+              "RelativeToolTip": "Views\\AddTopicForm.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAkwGQAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T06:10:20.378Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "MainForm.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\WordVaultAppMVC\\Views\\MainForm.cs",
               "RelativeDocumentMoniker": "Views\\MainForm.cs",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\WordVaultAppMVC\\Views\\MainForm.cs",
               "RelativeToolTip": "Views\\MainForm.cs",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAowA8AAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAYwBUAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-17T04:56:35.378Z",
+              "WhenOpened": "2025-04-17T06:08:37.224Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\WordVaultAppMVC\\Views\\MainForm.cs",
+              "RelativeDocumentMoniker": "Views\\MainForm.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\WordVaultAppMVC\\Views\\MainForm.cs [Design]",
+              "RelativeToolTip": "Views\\MainForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T05:24:19.351Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

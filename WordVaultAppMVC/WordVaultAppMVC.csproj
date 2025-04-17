@@ -69,11 +69,17 @@
     <Compile Include="Views\AddTopicForm.Designer.cs">
       <DependentUpon>AddTopicForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\DailyReviewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Views\DailyReviewForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\DailyReviewForm.Designer.cs">
       <DependentUpon>DailyReviewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FavoriteWordsControl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\FavoriteWordsForm.cs">
       <SubType>Form</SubType>
@@ -81,11 +87,20 @@
     <Compile Include="Views\FavoriteWordsForm.Designer.cs">
       <DependentUpon>FavoriteWordsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\HomeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\QuizControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Views\QuizForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\QuizForm.Designer.cs">
       <DependentUpon>QuizForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingsControl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\SettingsForm.cs">
       <SubType>Form</SubType>
@@ -93,11 +108,17 @@
     <Compile Include="Views\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ShuffleStudyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Views\ShuffleStudyForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\ShuffleStudyForm.Designer.cs">
       <DependentUpon>ShuffleStudyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TopicVocabularyControl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\TopicVocabularyForm.cs">
       <SubType>Form</SubType>
