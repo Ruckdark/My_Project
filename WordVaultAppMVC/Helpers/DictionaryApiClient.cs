@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Windows.Forms;
 using WordVaultAppMVC.Models;
+using Newtonsoft.Json.Linq;
 
 namespace WordVaultAppMVC.Helpers
 {
@@ -79,6 +80,29 @@ namespace WordVaultAppMVC.Helpers
                 return null;
             }
         }
+        // Change 1:
+        //public static async Task<string> TranslateToVietnamese(string text)
+        //{
+        //    using (HttpClient client = new HttpClient())
+        //    {
+        //        string url = $"https://api.mymemory.translated.net/get?q={Uri.EscapeDataString(text)}&langpair=en|vi";
+        //        string json = await client.GetStringAsync(url);
+        //        var data = Newtonsoft.Json.Linq.JObject.Parse(json);
+        //        return data["responseData"]?["translatedText"]?.ToString();
+        //    }
+        //}
+        public static async Task<string> TranslateToVietnamese(string text)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var url = $"https://api.mymemory.translated.net/get?q={Uri.EscapeDataString(text)}&langpair=en|vi";
+                var response = await client.GetStringAsync(url);
+                var json = JObject.Parse(response);
+                return json["responseData"]?["translatedText"]?.ToString() ?? "";
+            }
+        }
+
+
 
         // ❌ Bỏ hàm đồng bộ này vì có thể gây treo ứng dụng trong WinForms
         // public static WordDetails GetWordDetails(string word)

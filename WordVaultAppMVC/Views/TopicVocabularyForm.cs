@@ -92,16 +92,16 @@ namespace WordVaultAppMVC.Views
 
         private void TopicVocabularyForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // Xử lý khi form đóng
-            var result = MessageBox.Show("Bạn có chắc chắn muốn thoát không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.No)
-            {
-                e.Cancel = true; // Hủy thao tác đóng form
-            }
-            else
-            {
-                Application.Exit(); // Thoát chương trình
-            }
+            //// Xử lý khi form đóng
+            //var result = MessageBox.Show("Bạn có chắc chắn muốn thoát không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //if (result == DialogResult.No)
+            //{
+            //    e.Cancel = true; // Hủy thao tác đóng form
+            //}
+            //else
+            //{
+            //    Application.Exit(); // Thoát chương trình
+            //}
         }
     }
 }

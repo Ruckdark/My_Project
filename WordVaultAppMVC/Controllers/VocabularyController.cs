@@ -8,12 +8,10 @@ namespace WordVaultAppMVC.Controllers
     public class VocabularyController
     {
         private readonly VocabularyRepository _vocabularyRepository;
-        private VocabularyRepository _repository;
 
         public VocabularyController()
         {
             _vocabularyRepository = new VocabularyRepository();
-            _repository = new VocabularyRepository();
         }
 
         // Lấy danh sách từ vựng
@@ -21,14 +19,17 @@ namespace WordVaultAppMVC.Controllers
         {
             return _vocabularyRepository.GetAllVocabulary();
         }
+
+        // Lấy danh sách từ vựng theo chủ đề
         public List<Vocabulary> GetVocabularyByTopic(string topic)
         {
-            return _repository.GetVocabularyByTopic(topic);
+            return _vocabularyRepository.GetVocabularyByTopic(topic);
         }
 
+        // Xóa từ vựng theo ID
         public void RemoveVocabulary(int id)
         {
-            _repository.DeleteVocabulary(id);
+            _vocabularyRepository.DeleteVocabulary(id);
         }
 
         // Thêm từ vựng mới

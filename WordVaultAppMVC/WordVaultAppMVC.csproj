@@ -75,11 +75,23 @@
     <Compile Include="Views\DailyReviewForm.Designer.cs">
       <DependentUpon>DailyReviewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FavoriteWordsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FavoriteWordsForm.Designer.cs">
+      <DependentUpon>FavoriteWordsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\QuizForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\QuizForm.Designer.cs">
       <DependentUpon>QuizForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ShuffleStudyForm.cs">
       <SubType>Form</SubType>
