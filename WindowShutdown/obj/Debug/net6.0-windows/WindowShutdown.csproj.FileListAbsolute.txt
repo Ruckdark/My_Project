@@ -1,0 +1,41 @@
+D:\IT\Programming language\C#\MyProjects\Basic\WindowShutdown\bin\Debug\net6.0-windows\WindowShutdown.exe
+D:\IT\Programming language\C#\MyProjects\Basic\WindowShutdown\bin\Debug\net6.0-windows\WindowShutdown.deps.json
+D:\IT\Programming language\C#\MyProjects\Basic\WindowShutdown\bin\Debug\net6.0-windows\WindowShutdown.runtimeconfig.json
+D:\IT\Programming language\C#\MyProjects\Basic\WindowShutdown\bin\Debug\net6.0-windows\WindowShutdown.dll
+D:\IT\Programming language\C#\MyProjects\Basic\WindowShutdown\bin\Debug\net6.0-windows\WindowShutdown.pdb
+D:\IT\Programming language\C#\MyProjects\Basic\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.csproj.AssemblyReference.cache
+D:\IT\Programming language\C#\MyProjects\Basic\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.formWindowShutdown.resources
+D:\IT\Programming language\C#\MyProjects\Basic\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.csproj.GenerateResource.cache
+D:\IT\Programming language\C#\MyProjects\Basic\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.GeneratedMSBuildEditorConfig.editorconfig
+D:\IT\Programming language\C#\MyProjects\Basic\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.AssemblyInfoInputs.cache
+D:\IT\Programming language\C#\MyProjects\Basic\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.AssemblyInfo.cs
+D:\IT\Programming language\C#\MyProjects\Basic\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.csproj.CoreCompileInputs.cache
+D:\IT\Programming language\C#\MyProjects\Basic\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.dll
+D:\IT\Programming language\C#\MyProjects\Basic\WindowShutdown\obj\Debug\net6.0-windows\refint\WindowShutdown.dll
+D:\IT\Programming language\C#\MyProjects\Basic\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.pdb
+D:\IT\Programming language\C#\MyProjects\Basic\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.genruntimeconfig.cache
+D:\IT\Programming language\C#\MyProjects\Basic\WindowShutdown\obj\Debug\net6.0-windows\ref\WindowShutdown.dll
+D:\IT\Programming language\C#\MyProjects\Basic\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.FormFullMode.resources
+D:\IT\Programming language\C#\MyProjects\Basic\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.FormNeatMode.resources
+D:\IT\Programming language\C#\MyProjects\Basic\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.Properties.Resources.resources
+D:\IT\Programming language\C#\MyProjects\Basic\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.FormSleepMode.resources
+C:\Users\Admin\source\repos\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.FullModeControl.resources
+C:\Users\Admin\source\repos\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.MainForm.resources
+C:\Users\Admin\source\repos\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.NeatModeControl.resources
+C:\Users\Admin\source\repos\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.Properties.Resources.resources
+C:\Users\Admin\source\repos\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.SleepModeDialog.resources
+C:\Users\Admin\source\repos\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\source\repos\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.AssemblyInfoInputs.cache
+C:\Users\Admin\source\repos\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.AssemblyInfo.cs
+C:\Users\Admin\source\repos\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.dll
+C:\Users\Admin\source\repos\WindowShutdown\obj\Debug\net6.0-windows\refint\WindowShutdown.dll
+C:\Users\Admin\source\repos\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.pdb
+C:\Users\Admin\source\repos\WindowShutdown\bin\Debug\net6.0-windows\WindowShutdown.exe
+C:\Users\Admin\source\repos\WindowShutdown\bin\Debug\net6.0-windows\WindowShutdown.deps.json
+C:\Users\Admin\source\repos\WindowShutdown\bin\Debug\net6.0-windows\WindowShutdown.runtimeconfig.json
+C:\Users\Admin\source\repos\WindowShutdown\bin\Debug\net6.0-windows\WindowShutdown.dll
+C:\Users\Admin\source\repos\WindowShutdown\bin\Debug\net6.0-windows\WindowShutdown.pdb
+C:\Users\Admin\source\repos\WindowShutdown\obj\Debug\net6.0-windows\WindowShutdown.genruntimeconfig.cache
+C:\Users\Admin\source\repos\WindowShutdown\obj\Debug\net6.0-windows\ref\WindowShutdown.dll
