@@ -62,77 +62,57 @@
     <Compile Include="Helpers\AudioHelper.cs" />
     <Compile Include="Helpers\DictionaryApiClient.cs" />
     <Compile Include="Models\WordDetails.cs" />
+    <Compile Include="Services\DataService.cs" />
+    <Compile Include="Services\VocabularyExporterService.cs" />
     <Compile Include="Services\VocabularyService.cs" />
-    <Compile Include="Views\AddTopicForm.cs">
+    <Compile Include="Views\Forms\EditVocabularyForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\AddTopicForm.Designer.cs">
+    <Compile Include="Views\Forms\EditVocabularyForm.Designer.cs">
+      <DependentUpon>EditVocabularyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Forms\AddTopicForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Forms\AddTopicForm.Designer.cs">
       <DependentUpon>AddTopicForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\DailyReviewControl.cs">
+    <Compile Include="Views\Controls\DailyReviewControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\DailyReviewForm.cs">
+    <Compile Include="Views\Controls\FavoriteWordsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\HomeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\QuizControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Forms\ResultSummaryForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\DailyReviewForm.Designer.cs">
-      <DependentUpon>DailyReviewForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\FavoriteWordsControl.cs">
+    <Compile Include="Views\Controls\SettingsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\FavoriteWordsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\FavoriteWordsForm.Designer.cs">
-      <DependentUpon>FavoriteWordsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\HomeControl.cs">
+    <Compile Include="Views\Controls\ShuffleStudyControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\QuizControl.cs">
+    <Compile Include="Views\Controls\TopicVocabularyControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\QuizForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\QuizForm.Designer.cs">
-      <DependentUpon>QuizForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\SettingsControl.cs">
+    <Compile Include="Views\Controls\VocabularyDetailPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\SettingsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\SettingsForm.Designer.cs">
-      <DependentUpon>SettingsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ShuffleStudyControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\TopicVocabularyControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\TopicVocabularyForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\TopicVocabularyForm.Designer.cs">
-      <DependentUpon>TopicVocabularyForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\VocabularyDetailPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\VocabularyDetailPanel.Designer.cs">
+    <Compile Include="Views\Controls\VocabularyDetailPanel.Designer.cs">
       <DependentUpon>VocabularyDetailPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\VocabularyListForm.cs">
+    <Compile Include="Views\Forms\VocabularyListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\VocabularyListForm.Designer.cs">
+    <Compile Include="Views\Forms\VocabularyListForm.Designer.cs">
       <DependentUpon>VocabularyListForm.cs</DependentUpon>
     </Compile>
-    <Content Include="Models\AppDbContext.txt" />
     <Compile Include="Data\DatabaseContext.cs" />
     <Compile Include="Models\LearningStatus.cs" />
     <Compile Include="Models\QuizResult.cs" />
@@ -141,10 +121,10 @@
     <Compile Include="Models\VocabularyTopic.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\MainForm.cs">
+    <Compile Include="Views\Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\MainForm.Designer.cs">
+    <Compile Include="Views\Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -156,17 +136,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Views\AddTopicForm.resx">
+    <EmbeddedResource Include="Views\Forms\AddTopicForm.resx">
       <DependentUpon>AddTopicForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\MainForm.resx">
+    <EmbeddedResource Include="Views\Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\QuizForm.resx">
-      <DependentUpon>QuizForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\TopicVocabularyForm.resx">
-      <DependentUpon>TopicVocabularyForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -178,12 +152,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Views\Dialogs\" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="WMPLib">

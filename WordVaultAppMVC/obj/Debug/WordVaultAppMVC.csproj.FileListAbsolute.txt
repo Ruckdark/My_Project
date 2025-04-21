@@ -1,8 +1,6 @@
 C:\Users\Admin\source\repos\WordVaultAppMVC\obj\Debug\WordVaultAppMVC.csproj.AssemblyReference.cache
 C:\Users\Admin\source\repos\WordVaultAppMVC\obj\Debug\WordVaultAppMVC.Properties.Resources.resources
 C:\Users\Admin\source\repos\WordVaultAppMVC\obj\Debug\WordVaultAppMVC.Views.MainForm.resources
-C:\Users\Admin\source\repos\WordVaultAppMVC\obj\Debug\WordVaultAppMVC.Views.QuizForm.resources
-C:\Users\Admin\source\repos\WordVaultAppMVC\obj\Debug\WordVaultAppMVC.Views.TopicVocabularyForm.resources
 C:\Users\Admin\source\repos\WordVaultAppMVC\obj\Debug\WordVaultAppMVC.csproj.GenerateResource.cache
 C:\Users\Admin\source\repos\WordVaultAppMVC\obj\Debug\WordVaultAppMVC.csproj.CoreCompileInputs.cache
 C:\Users\Admin\source\repos\WordVaultAppMVC\obj\Debug\Interop.WMPLib.dll
