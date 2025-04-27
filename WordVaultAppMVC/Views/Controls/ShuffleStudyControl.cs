@@ -1,4 +1,5 @@
-﻿using System;
+﻿// TODO: bắt đầu từ đây trở xuống là chưa refactor
+using System;
 using System.Collections.Generic; // Cần cho List (nếu dùng)
 using System.Drawing;
 using System.Windows.Forms;
@@ -265,30 +266,5 @@ namespace WordVaultAppMVC.Views.Controls
             txtMeaningInput.Enabled = false;
             lblFeedback.Visible = false;
         }
-
-        // --- Các hàm tự đánh giá (Tùy chọn - cần thêm logic) ---
-        /*
-        private void BtnRemembered_Click(object sender, EventArgs e)
-        {
-            if (currentVocabulary != null)
-            {
-                // Cập nhật trạng thái dùng learningController
-                // learningController.UpdateLearningStatus(currentVocabulary.Id.ToString(), "Đã học");
-                Debug.WriteLine($"Word ID {currentVocabulary.Id} marked as Remembered");
-            }
-            BtnNextWord_Click(sender, e); // Chuyển từ
-        }
-
-        private void BtnNotRemembered_Click(object sender, EventArgs e)
-        {
-             if (currentVocabulary != null)
-            {
-                // Cập nhật trạng thái dùng learningController
-                // learningController.UpdateLearningStatus(currentVocabulary.Id.ToString(), "Đang học");
-                Debug.WriteLine($"Word ID {currentVocabulary.Id} marked as Not Remembered");
-            }
-            BtnNextWord_Click(sender, e); // Chuyển từ
-        }
-        */
     }
 }

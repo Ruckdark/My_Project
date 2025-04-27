@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\source\\repos\\WordVaultAppMVC\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{21354C8C-FE34-4E05-B861-BD87189801BC}|WordVaultAppMVC.csproj|c:\\users\\admin\\source\\repos\\wordvaultappmvc\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
-      "RelativeMoniker": "D:0:0:{21354C8C-FE34-4E05-B861-BD87189801BC}|WordVaultAppMVC.csproj|solutionrelative:readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+      "AbsoluteMoniker": "D:0:0:{21354C8C-FE34-4E05-B861-BD87189801BC}|WordVaultAppMVC.csproj|c:\\users\\admin\\source\\repos\\wordvaultappmvc\\views\\controls\\shufflestudycontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{21354C8C-FE34-4E05-B861-BD87189801BC}|WordVaultAppMVC.csproj|solutionrelative:views\\controls\\shufflestudycontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,14 +23,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "README.md",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\WordVaultAppMVC\\README.md",
-              "RelativeDocumentMoniker": "README.md",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\WordVaultAppMVC\\README.md",
-              "RelativeToolTip": "README.md",
-              "ViewState": "AgIAAHsAAAAAAAAAAAAQwIwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2025-04-19T16:08:43.819Z",
+              "Title": "ShuffleStudyControl.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\WordVaultAppMVC\\Views\\Controls\\ShuffleStudyControl.cs",
+              "RelativeDocumentMoniker": "Views\\Controls\\ShuffleStudyControl.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\WordVaultAppMVC\\Views\\Controls\\ShuffleStudyControl.cs",
+              "RelativeToolTip": "Views\\Controls\\ShuffleStudyControl.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-27T14:17:45.023Z",
               "EditorCaption": ""
             }
           ]
