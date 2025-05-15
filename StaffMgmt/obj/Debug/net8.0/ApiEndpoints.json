@@ -1,0 +1,34 @@
+[
+  {
+    "ContainingType": "StaffMgmt.ApiControllers.AddressApiController",
+    "Method": "GetDistrictsByProvinceId",
+    "RelativePath": "api/address/districts/{provinceId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "provinceId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StaffMgmt.ApiControllers.AddressApiController",
+    "Method": "GetWardsByDistrictId",
+    "RelativePath": "api/address/wards/{districtId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "districtId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

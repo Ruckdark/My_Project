@@ -1,0 +1,59 @@
+﻿@* File: Views/Employee/Details.cshtml *@
+@model StaffMgmt.Models.Employee
+
+@{
+    ViewData["Title"] = "Chi tiết Nhân viên";
+}
+
+<h1>@ViewData["Title"]: @Model.FullName</h1>
+
+<div>
+    <h4>Thông tin cơ bản</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.FullName)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.FullName)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.DateOfBirth)</dt>
+        <dd class="col-sm-9">@Model.DateOfBirth?.ToString("dd/MM/yyyy")</dd> @* Định dạng ngày *@
+
+        <dt class="col-sm-3">Dân tộc</dt> @* Lấy tên từ bảng liên quan *@
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Ethnicity.Name)</dd>
+
+        <dt class="col-sm-3">Nghề nghiệp</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Occupation.Name)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.IdentityCardNumber)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.IdentityCardNumber)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.PhoneNumber)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.PhoneNumber)</dd>
+    </dl>
+
+    <h4>Địa chỉ</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Tỉnh/Thành phố</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Province.Name)</dd>
+
+        <dt class="col-sm-3">Quận/Huyện</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.District.Name)</dd>
+
+        <dt class="col-sm-3">Xã/Phường</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Ward.Name)</dd>
+
+        <dt class="col-sm-3">Địa chỉ cụ thể</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.StreetAddress)</dd>
+    </dl>
+
+    @* TODO: Hiển thị danh sách văn bằng *@
+    <h4>Văn bằng</h4>
+    <hr />
+    <p>Chưa có thông tin văn bằng.</p>
+
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Sửa</a> |
+    <a asp-action="Index" class="btn btn-secondary">Quay lại Danh sách</a>
+</div>
+

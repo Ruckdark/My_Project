@@ -1,0 +1,2 @@
+﻿sửa lại EmployeeForm lỗi hiển thị validation
+sửa lại EmployeeController đang bị lỗi NULL trùng lặp cho 2 trường sdt và cccd

@@ -1,0 +1,339 @@
+﻿@* File: Views/Employee/EmployeeForm.cshtml *@
+@* Khai báo ViewModel mà View này sử dụng *@
+@model StaffMgmt.Models.EmployeeFormViewModel
+@* Hoặc @model StaffMgmt.ViewModels.EmployeeFormViewModel nếu Đại ca đặt trong thư mục ViewModels *@
+
+@{
+    ViewData["Title"] = "Quản lý Nhân viên";
+    // Lấy giá trị Id từ Model để xác định là form Create hay Edit (nếu cần)
+    bool isEditMode = Model?.Id > 0; // Kiểm tra Model khác null trước khi truy cập Id
+}
+
+@* Section để thêm CSS riêng cho trang này *@
+@section Styles {
+    @* Link CSS tùy chỉnh cho form *@
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    @* --- Thêm CSS cho Select2 và Theme Bootstrap 5 --- *@
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+    @* ------------------------------------------------ *@
+    <style>
+        /* CSS cho bố cục grid */
+        .form-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem 1.5rem; margin-bottom: 1.5rem; }
+        .address-group-label { grid-column: 1 / -1; margin-top: 1rem; margin-bottom: 0.5rem; font-weight: bold; }
+        .address-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; grid-column: 1 / -1; margin-bottom: 1rem; padding-left: 15px; }
+
+        /* Style chung cho label và nút */
+        .form-group > label:not(.form-check-label):not(.address-group-label) { margin-bottom: 0.25rem; font-size: 0.9rem; }
+        .employee-form .btn { border-radius: 2px; padding: 5px 12px; font-size: 0.9rem; }
+        .employee-form .submit-button { background-color: #e0e0e0; border-color: #bdbdbd; color: #333; font-weight: bold; }
+        .employee-form .submit-button:hover { background-color: #d5d5d5; border-color: #adadad; }
+        .employee-form .cancel-button { background-color: #eee; border-color: #ccc; color: #333; }
+        .employee-form .cancel-button:hover { background-color: #ddd; border-color: #bbb; }
+        .employee-form .back-button { border: none; background: none; color: #0d6efd; padding-left: 0; }
+        .employee-form .back-button:hover { text-decoration: underline; }
+        .form-group .form-check { margin-top: 0.25rem; }
+
+        /* Class để ẩn trường Tuổi */
+        .hidden-field { display: none; }
+
+        /* Style cho thông báo lỗi validation */
+        .field-validation-error { color: #dc3545; /* Màu đỏ Bootstrap */ font-size: 0.875em; display: block; /* Đảm bảo lỗi luôn hiển thị */ }
+        /* Thêm viền đỏ cho input/select gốc bị lỗi */
+        .input-validation-error { border-color: #dc3545 !important; }
+        select.input-validation-error { border-color: #dc3545 !important; }
+        /* Style cho select2 UI khi select gốc bị lỗi */
+        select.input-validation-error + .select2-container--bootstrap-5 .select2-selection { border-color: #dc3545 !important; }
+        .validation-summary-errors ul { list-style: none; padding-left: 0; margin-bottom: 0; }
+        .validation-summary-errors li { color: #dc3545; }
+
+        /* CSS tùy chỉnh cho Select2 để giống form hơn */
+        .select2-container--bootstrap-5 .select2-selection {
+            font-size: 0.875rem; /* Kích thước font giống form-control-sm */
+            min-height: calc(1.5em + 0.5rem + 2px); /* Chiều cao giống form-control-sm */
+            padding: 0.25rem 0.5rem;
+            border-radius: 2px; /* Góc vuông hơn */
+            border: 1px solid #dee2e6; /* Thêm border mặc định giống Bootstrap */
+        }
+        .select2-container--bootstrap-5 .select2-selection--single .select2-selection__rendered {
+            padding-left: 0;
+            line-height: 1.5;
+        }
+        .select2-container--bootstrap-5 .select2-selection--single .select2-selection__arrow {
+             height: calc(1.5em + 0.5rem); /* Điều chỉnh chiều cao mũi tên */
+             top: 0px;
+        }
+        /* ------------------------------------------------- */
+    </style>
+}
+
+@* Container chính của form *@
+<div class="container emp-form-container border p-3 bg-white shadow-sm">
+
+    @* Phần Tabs điều hướng *@
+    <div class="tabs mb-3">
+        <button class="tab-button active" data-tab-target="#employeeInfoTab">Quản lý Employee</button>
+        <a asp-controller="Provinces" asp-action="Index" class="tab-button">Danh mục Tỉnh</a>
+        <a asp-controller="Districts" asp-action="Index" class="tab-button">Danh mục Huyện</a> @* Cần tạo Controller sau *@
+        <a asp-controller="Wards" asp-action="Index" class="tab-button">Danh mục Xã</a> @* Cần tạo Controller sau *@
+    </div>
+
+    @* Form chính, sử dụng Tag Helper *@
+    <form class="employee-form" asp-action="@(isEditMode ? "Edit" : "Create")" asp-controller="Employee" method="post">
+        @* Token chống giả mạo yêu cầu *@
+        @Html.AntiForgeryToken()
+
+        @* Hiển thị tóm tắt lỗi validation (bao gồm cả lỗi property và lỗi chung) *@
+        <div asp-validation-summary="All" class="alert alert-danger validation-summary-errors mb-3" role="alert" style="@(ViewData.ModelState.IsValid ? "display:none;" : "")"></div>
+
+        @* Input ẩn chứa Id khi ở chế độ Edit *@
+        @if (isEditMode)
+        {
+            <input type="hidden" asp-for="Id" />
+        }
+
+        @* Nội dung chính của form *@
+        <div id="employeeInfoTab" class="tab-content active border p-3">
+            @* Grid layout cho các trường thông tin *@
+            <div class="form-grid">
+
+                @* --- Hàng 1 (Fields 1-4) --- *@
+                <div class="form-group">
+                    <label asp-for="FullName"></label> @* Label tự động lấy tên từ Display attribute *@
+                    <input asp-for="FullName" class="form-control form-control-sm" /> @* Input liên kết với ViewModel *@
+                    <span asp-validation-for="FullName" class="field-validation-error"></span> @* Hiển thị lỗi validation cho FullName *@
+                </div>
+                <div class="form-group date-group">
+                    <label asp-for="DateOfBirth"></label>
+                    <div class="input-group input-group-sm">
+                         <input asp-for="DateOfBirth" type="date" class="form-control form-control-sm" id="dateOfBirthInput" /> @* Input kiểu date *@
+                    </div>
+                     <span asp-validation-for="DateOfBirth" class="field-validation-error"></span>
+                </div>
+                <div class="form-group hidden-field"> @* Ẩn trường tuổi *@
+                    <label for="ageInput">3. Tuổi</label>
+                    <input type="number" id="ageInput" class="form-control form-control-sm" readonly>
+                </div>
+                 <div class="form-group">
+                    <label asp-for="EthnicityId"></label>
+                     @* Dropdown Dân tộc, áp dụng Select2 *@
+                     <select asp-for="EthnicityId" asp-items="@Model.EthnicityList" class="form-select form-select-sm select2-basic"> @* Thêm class select2-basic *@
+                        <option value="">Chọn dân tộc</option> @* Option mặc định *@
+                    </select>
+                    <span asp-validation-for="EthnicityId" class="field-validation-error"></span>
+                </div>
+
+                @* --- Hàng 2 (Fields 5-7 và ô trống) --- *@
+                <div class="form-group">
+                    <label asp-for="OccupationId"></label>
+                    @* Dropdown Nghề nghiệp, áp dụng Select2 *@
+                    <select asp-for="OccupationId" asp-items="@Model.OccupationList" class="form-select form-select-sm select2-basic"> @* Thêm class select2-basic *@
+                        <option value="">Chọn nghề nghiệp</option>
+                    </select>
+                     <span asp-validation-for="OccupationId" class="field-validation-error"></span>
+                </div>
+                 <div class="form-group">
+                    <label asp-for="IdentityCardNumber"></label>
+                    <input asp-for="IdentityCardNumber" class="form-control form-control-sm" id="cccdInput"/> @* Giữ lại id cho JS *@
+                    <div class="form-check mt-1">
+                        <input asp-for="HasNoIdentityCard" class="form-check-input" id="khongCCCDCheckbox"/> @* Giữ lại id cho JS *@
+                        <label class="form-check-label" asp-for="HasNoIdentityCard"></label>
+                    </div>
+                    <span asp-validation-for="IdentityCardNumber" class="field-validation-error"></span>
+                </div>
+                 <div class="form-group">
+                    <label asp-for="PhoneNumber"></label>
+                    <input asp-for="PhoneNumber" type="tel" class="form-control form-control-sm" id="sdtInput"/> @* Giữ lại id cho JS *@
+                    <div class="form-check mt-1">
+                        <input asp-for="HasNoPhoneNumber" class="form-check-input" id="khongSDTCheckbox"/> @* Giữ lại id cho JS *@
+                        <label class="form-check-label" asp-for="HasNoPhoneNumber"></label>
+                    </div>
+                     <span asp-validation-for="PhoneNumber" class="field-validation-error"></span>
+                </div>
+                <div class="form-group"></div> @* Ô trống để căn chỉnh layout *@
+
+
+                 @* --- Hàng 3: Nhóm Địa chỉ --- *@
+                 <label class="address-group-label">8. Địa chỉ</label>
+                 <div class="address-grid"> @* Grid con cho các trường địa chỉ *@
+                     <div class="form-group">
+                        <label asp-for="ProvinceId"></label>
+                         @* Dropdown Tỉnh, dùng id để JS chọn *@
+                         <select asp-for="ProvinceId" asp-items="@Model.ProvinceList" class="form-select form-select-sm" id="provinceSelect">
+                             <option value="">Chọn Tỉnh / Thành phố</option>
+                         </select>
+                         <span asp-validation-for="ProvinceId" class="field-validation-error"></span>
+                     </div>
+                      <div class="form-group">
+                        <label asp-for="DistrictId"></label>
+                         @* Dropdown Huyện, danh sách được load từ Controller/JS *@
+                         <select asp-for="DistrictId" asp-items="@Model.DistrictList" class="form-select form-select-sm" id="districtSelect" disabled>
+                             <option value="">Chọn Quận / Huyện</option>
+                         </select>
+                         <span asp-validation-for="DistrictId" class="field-validation-error"></span>
+                     </div>
+                     <div class="form-group">
+                        <label asp-for="WardId"></label>
+                         @* Dropdown Xã, danh sách được load từ JS *@
+                         <select asp-for="WardId" asp-items="@Model.WardList" class="form-select form-select-sm" id="wardSelect" disabled>
+                             <option value="">Chọn Xã / Phường</option>
+                         </select>
+                         <span asp-validation-for="WardId" class="field-validation-error"></span>
+                     </div>
+                     <div class="form-group">
+                        <label asp-for="StreetAddress"></label>
+                        <input asp-for="StreetAddress" class="form-control form-control-sm" placeholder="Số nhà, tên đường..."> @* Thêm placeholder *@
+                         <span asp-validation-for="StreetAddress" class="field-validation-error"></span>
+                     </div>
+                 </div> @* End .address-grid *@
+
+            </div> @* End .form-grid *@
+
+            @* Phần Footer Form với các nút hành động *@
+            <div class="form-footer mt-4 pt-3 border-top d-flex justify-content-between align-items-center">
+                @* Nút quay lại trang danh sách *@
+                <a asp-action="Index" asp-controller="Employee" class="btn btn-link back-button p-0">
+                     &lt; Danh sách Employee
+                </a>
+                @* Các nút Hủy và Xác nhận/Cập nhật *@
+                <div class="action-buttons">
+                    <button type="reset" class="btn btn-outline-secondary cancel-button">Hủy</button>
+                    <button type="submit" class="btn btn-primary submit-button">
+                        @(isEditMode ? "Cập nhật" : "Xác nhận") @* Text nút thay đổi tùy theo mode *@
+                    </button>
+                </div>
+            </div>
+        </div> @* End .tab-content *@
+    </form> @* End form *@
+</div> @* End .container *@
+
+@* Section chứa các script riêng của trang này *@
+@section Scripts {
+    @* --- Thêm JS cho Select2 --- *@
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    @* -------------------------- *@
+
+    <script>
+        // Sử dụng jQuery vì Select2 và Validation thường dùng jQuery
+        $(document).ready(function () { // Chạy code khi DOM sẵn sàng
+
+            // --- Khởi tạo Select2 ---
+            // Áp dụng cho các select có class 'select2-basic'
+            $('.select2-basic').select2({
+                theme: "bootstrap-5",
+                width: 'style',
+                placeholder: "Chọn...",
+                allowClear: true
+            }).on('select2:select select2:clear', function(e) {
+                // Trigger validation khi người dùng chọn hoặc xóa lựa chọn
+                $(this).valid(); // Gọi .valid() của jQuery Validation
+            });
+
+             // Khởi tạo riêng cho Tỉnh/Huyện/Xã
+             $('#provinceSelect').select2({ theme: "bootstrap-5", width: 'style', placeholder: "Chọn Tỉnh / Thành phố", allowClear: true });
+             $('#districtSelect').select2({ theme: "bootstrap-5", width: 'style', placeholder: "Chọn Quận / Huyện", allowClear: true });
+             $('#wardSelect').select2({ theme: "bootstrap-5", width: 'style', placeholder: "Chọn Xã / Phường", allowClear: true });
+            // -------------------------
+
+
+            // --- Xử lý checkbox disable input (JS thuần) ---
+            const cccdInput = document.getElementById('cccdInput'); const khongCCCDCheckbox = document.getElementById('khongCCCDCheckbox'); const sdtInput = document.getElementById('sdtInput'); const khongSDTCheckbox = document.getElementById('khongSDTCheckbox'); function toggleInputDisabled(c, i) { if(i){i.disabled=c.checked;if(c.checked)i.value='';}} if(khongCCCDCheckbox){khongCCCDCheckbox.addEventListener('change',function(){toggleInputDisabled(this,cccdInput);});toggleInputDisabled(khongCCCDCheckbox, cccdInput);} if(khongSDTCheckbox){khongSDTCheckbox.addEventListener('change',function(){toggleInputDisabled(this,sdtInput);});toggleInputDisabled(khongSDTCheckbox, sdtInput);}
+
+             // --- Tính tuổi tự động (JS thuần) ---
+             const dobInput = document.getElementById('dateOfBirthInput'); const ageInput = document.getElementById('ageInput'); function calculateAge() { if(dobInput&&ageInput&&dobInput.value){try{let b;if(dobInput.value.includes('/')){const p=dobInput.value.split('/');if(p.length===3){b=new Date(p[2],p[1]-1,p[0]);}}else{b=new Date(dobInput.value);}if(b&&!isNaN(b.getTime())){const t=new Date();let a=t.getFullYear()-b.getFullYear();const m=t.getMonth()-b.getMonth();if(m<0||(m===0&&t.getDate()<b.getDate())){a--;}ageInput.value=a>=0?a:'';}else{ageInput.value='';}}catch(e){console.error("Lỗi tính tuổi:",e);ageInput.value='';}}else if(ageInput){ageInput.value='';}} if(dobInput){dobInput.addEventListener('change',calculateAge);dobInput.addEventListener('blur',calculateAge);calculateAge();}
+
+            // --- Cascading Dropdown (jQuery & Select2) ---
+            const $provinceSelect = $('#provinceSelect');
+            const $districtSelect = $('#districtSelect');
+            const $wardSelect = $('#wardSelect');
+            const $employeeForm = $('.employee-form'); // Lấy form để trigger validation
+
+            // Hàm reset dropdown Select2 và xóa lỗi validation
+            function resetSelect2Dropdown($select, placeholderText) {
+                const originalValue = $select.val();
+                $select.empty().append(`<option value="">${placeholderText}</option>`).val(null).trigger('change');
+                $select.prop('disabled', true);
+                if (originalValue) {
+                    var validator = $employeeForm.validate();
+                    if (validator) {
+                        var errors = {}; errors[$select.attr('name')] = ''; validator.showErrors(errors);
+                        $select.removeClass('input-validation-error');
+                        $select.siblings('.select2-container').find('.select2-selection').removeClass('input-validation-error');
+                    }
+                }
+            }
+
+            // Hàm populate dropdown Select2
+            function populateSelect2Dropdown($select, data, placeholderText, selectedValue = null) {
+                 $select.prop('disabled', true);
+                 $select.empty();
+                 $select.append(`<option value="">${placeholderText}</option>`);
+
+                 if (data && data.length > 0) {
+                     data.forEach(item => {
+                         const option = new Option(item.name, item.id, false, (selectedValue && item.id == selectedValue));
+                         $select.append(option);
+                     });
+                     $select.prop('disabled', false);
+                 } else { $select.append('<option value="">Không có dữ liệu</option>'); }
+                 $select.trigger('change'); // Cập nhật UI Select2
+            }
+
+            // Event handler riêng cho Select2 Huyện/Xã để trigger validation
+             $('#districtSelect, #wardSelect').on('select2:select select2:clear', function (e) {
+                $(this).valid(); // Validate chính nó
+                if ($(this).is('#districtSelect')) {
+                    $wardSelect.valid(); // Validate lại xã khi huyện thay đổi
+                }
+            });
+
+            // Sự kiện khi Tỉnh thay đổi
+            $provinceSelect.on('change', function () {
+                const provinceId = $(this).val();
+                resetSelect2Dropdown($districtSelect, 'Chọn Quận / Huyện');
+                resetSelect2Dropdown($wardSelect, 'Chọn Quận / Huyện trước');
+
+                // Trigger validation cho Huyện/Xã SAU KHI RESET
+                 setTimeout(function() { $districtSelect.valid(); $wardSelect.valid(); }, 50);
+
+                if (!provinceId) return;
+
+                $districtSelect.empty().append('<option value="">Đang tải...</option>').prop('disabled', true).trigger('change');
+                $.ajax({ url: `/api/address/districts/${provinceId}`, type: 'GET', success: function (data) {
+                    populateSelect2Dropdown($districtSelect, data, 'Chọn Quận / Huyện');
+                    // Trigger validation cho Huyện SAU KHI POPULATE
+                    setTimeout(function() { $districtSelect.valid(); }, 50);
+                }, error: function () { resetSelect2Dropdown($districtSelect, 'Lỗi tải dữ liệu'); } });
+            });
+
+            // Sự kiện khi Huyện thay đổi
+             $districtSelect.on('change', function () {
+                 const districtId = $(this).val();
+                 resetSelect2Dropdown($wardSelect, 'Chọn Xã / Phường');
+
+                 // Trigger validation cho Xã SAU KHI RESET
+                  setTimeout(function() { $wardSelect.valid(); }, 50);
+
+                 if (!districtId) return;
+
+                 $wardSelect.empty().append('<option value="">Đang tải...</option>').prop('disabled', true).trigger('change');
+                 $.ajax({ url: `/api/address/wards/${districtId}`, type: 'GET', success: function (data) {
+                     populateSelect2Dropdown($wardSelect, data, 'Chọn Xã / Phường');
+                     // Trigger validation cho Xã SAU KHI POPULATE
+                     setTimeout(function() { $wardSelect.valid(); }, 50);
+                    }, error: function () { resetSelect2Dropdown($wardSelect, 'Lỗi tải dữ liệu'); } });
+             });
+
+             // Xử lý khi load trang Edit
+             if ($districtSelect.find('option').length > 1 && $districtSelect.val()) { $districtSelect.prop('disabled', false); }
+             if ($wardSelect.find('option').length > 1 && $wardSelect.val()) { $wardSelect.prop('disabled', false); }
+             $districtSelect.trigger('change.select2');
+             $wardSelect.trigger('change.select2');
+             // Bỏ trigger validation ban đầu khi load Edit
+
+        });
+    </script>
+
+    @* Tham chiếu Partial View chứa script jQuery Validation *@
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

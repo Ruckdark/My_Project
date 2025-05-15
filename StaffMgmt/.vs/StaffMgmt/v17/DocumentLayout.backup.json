@@ -1,0 +1,1129 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\views\\provinces\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:views\\provinces\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\views\\provinces\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:views\\provinces\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\views\\provinces\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:views\\provinces\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\views\\provinces\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:views\\provinces\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\views\\provinces\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:views\\provinces\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\views\\employee\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:views\\employee\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\views\\employee\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:views\\employee\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\views\\employee\\employeeformtext.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:views\\employee\\employeeformtext.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\views\\employee\\employeeform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:views\\employee\\employeeform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\views\\employee\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:views\\employee\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\validators\\employeeformviewmodelvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:validators\\employeeformviewmodelvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\services\\wardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:services\\wardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\services\\provinceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:services\\provinceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\services\\occupationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:services\\occupationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\services\\ethnicityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:services\\ethnicityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\services\\districtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:services\\districtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\services\\dataseedingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:services\\dataseedingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\models\\ward.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:models\\ward.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\models\\province.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:models\\province.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\models\\occupation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:models\\occupation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\models\\ethnicity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:models\\ethnicity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\models\\employeeformviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:models\\employeeformviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\models\\district.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:models\\district.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\models\\certificate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:models\\certificate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\interfaces\\iwardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:interfaces\\iwardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\interfaces\\iwardbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:interfaces\\iwardbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\interfaces\\iprovinceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:interfaces\\iprovinceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\interfaces\\iprovincebusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:interfaces\\iprovincebusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\interfaces\\ioccupationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:interfaces\\ioccupationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\interfaces\\ioccupationbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:interfaces\\ioccupationbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\interfaces\\iethnicityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:interfaces\\iethnicityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\interfaces\\iethnicitybusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:interfaces\\iethnicitybusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\interfaces\\iemployeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:interfaces\\iemployeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\interfaces\\iemployeebusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:interfaces\\iemployeebusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\interfaces\\idistrictservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:interfaces\\idistrictservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\interfaces\\idistrictbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:interfaces\\idistrictbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\interfaces\\idataseedingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:interfaces\\idataseedingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\dtos\\wardnesteddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:dtos\\wardnesteddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\dtos\\provincenesteddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:dtos\\provincenesteddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\dtos\\districtnesteddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:dtos\\districtnesteddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\data\\staffmgmtdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:data\\staffmgmtdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\controllers\\provincescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:controllers\\provincescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\business\\wardbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:business\\wardbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\business\\provincebusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:business\\provincebusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\business\\occupationbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:business\\occupationbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\business\\ethnicitybusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:business\\ethnicitybusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\business\\employeebusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:business\\employeebusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\business\\districtbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:business\\districtbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\apicontrollers\\addressapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:apicontrollers\\addressapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\views\\employee\\employeeformtext.txt||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:views\\employee\\employeeformtext.txt||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|d:\\it\\programming language\\c#\\myprojects\\oceantech\\staffmgmt\\todo.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{9D91688E-0DD5-414A-A00F-5462E7ED0903}|StaffMgmt.csproj|solutionrelative:todo.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 54,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-03T08:57:54.13Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "Views\\_ViewStart.cshtml",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "Views\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-03T08:57:47.448Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "Views\\_ViewImports.cshtml",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "Views\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-03T08:57:16.248Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Error.cshtml",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Shared\\Error.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\Error.cshtml",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Shared\\Error.cshtml",
+              "RelativeToolTip": "Views\\Shared\\Error.cshtml",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAIwBkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-03T08:56:52.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-03T08:56:28.025Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE4AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-03T08:55:58.445Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Provinces\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Provinces\\Index.cshtml",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Provinces\\Index.cshtml",
+              "RelativeToolTip": "Views\\Provinces\\Index.cshtml",
+              "ViewState": "AgIAABMAAAAAAAAAAAAowCMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-03T08:55:36.876Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Provinces\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Views\\Provinces\\Edit.cshtml",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Provinces\\Edit.cshtml",
+              "RelativeToolTip": "Views\\Provinces\\Edit.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAowB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-03T08:55:10.291Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Provinces\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\Provinces\\Details.cshtml",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Provinces\\Details.cshtml",
+              "RelativeToolTip": "Views\\Provinces\\Details.cshtml",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAowBgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-03T08:54:56.158Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Provinces\\Delete.cshtml",
+              "RelativeDocumentMoniker": "Views\\Provinces\\Delete.cshtml",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Provinces\\Delete.cshtml",
+              "RelativeToolTip": "Views\\Provinces\\Delete.cshtml",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAowBsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-03T08:54:34.904Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Provinces\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Provinces\\Create.cshtml",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Provinces\\Create.cshtml",
+              "RelativeToolTip": "Views\\Provinces\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-03T08:53:31.282Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Privacy.cshtml",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Home\\Privacy.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Privacy.cshtml",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Home\\Privacy.cshtml",
+              "RelativeToolTip": "Views\\Home\\Privacy.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-03T08:53:16.211Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-03T08:53:01.484Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "EmployeeFormText.txt",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Employee\\EmployeeFormText.txt",
+              "RelativeDocumentMoniker": "Views\\Employee\\EmployeeFormText.txt",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Employee\\EmployeeFormText.txt",
+              "RelativeToolTip": "Views\\Employee\\EmployeeFormText.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-05-03T08:52:40.863Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "WardService.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Services\\WardService.cs",
+              "RelativeDocumentMoniker": "Services\\WardService.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Services\\WardService.cs",
+              "RelativeToolTip": "Services\\WardService.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:51:23.673Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ProvinceService.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Services\\ProvinceService.cs",
+              "RelativeDocumentMoniker": "Services\\ProvinceService.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Services\\ProvinceService.cs",
+              "RelativeToolTip": "Services\\ProvinceService.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAwFsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:51:17.771Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "OccupationService.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Services\\OccupationService.cs",
+              "RelativeDocumentMoniker": "Services\\OccupationService.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Services\\OccupationService.cs",
+              "RelativeToolTip": "Services\\OccupationService.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAgwBQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:51:04.353Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "EthnicityService.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Services\\EthnicityService.cs",
+              "RelativeDocumentMoniker": "Services\\EthnicityService.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Services\\EthnicityService.cs",
+              "RelativeToolTip": "Services\\EthnicityService.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAgwBYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:50:59.217Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "DistrictService.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Services\\DistrictService.cs",
+              "RelativeDocumentMoniker": "Services\\DistrictService.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Services\\DistrictService.cs",
+              "RelativeToolTip": "Services\\DistrictService.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAowCYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:50:39.828Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "DataSeedingService.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Services\\DataSeedingService.cs",
+              "RelativeDocumentMoniker": "Services\\DataSeedingService.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Services\\DataSeedingService.cs",
+              "RelativeToolTip": "Services\\DataSeedingService.cs",
+              "ViewState": "AgIAANUAAAAAAAAAAAAswOgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:50:06.552Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Ward.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Models\\Ward.cs",
+              "RelativeDocumentMoniker": "Models\\Ward.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Models\\Ward.cs",
+              "RelativeToolTip": "Models\\Ward.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAYwCAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:49:57.207Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "Province.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Models\\Province.cs",
+              "RelativeDocumentMoniker": "Models\\Province.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Models\\Province.cs",
+              "RelativeToolTip": "Models\\Province.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAA1wB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:49:50.576Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Occupation.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Models\\Occupation.cs",
+              "RelativeDocumentMoniker": "Models\\Occupation.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Models\\Occupation.cs",
+              "RelativeToolTip": "Models\\Occupation.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAuwAcAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:49:20.243Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "Ethnicity.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Models\\Ethnicity.cs",
+              "RelativeDocumentMoniker": "Models\\Ethnicity.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Models\\Ethnicity.cs",
+              "RelativeToolTip": "Models\\Ethnicity.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAuwAcAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:48:42.213Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:20:20.084Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "EmployeeFormViewModel.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Models\\EmployeeFormViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\EmployeeFormViewModel.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Models\\EmployeeFormViewModel.cs",
+              "RelativeToolTip": "Models\\EmployeeFormViewModel.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAqwFoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:20:12.134Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "Employee.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Models\\Employee.cs",
+              "RelativeDocumentMoniker": "Models\\Employee.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Models\\Employee.cs",
+              "RelativeToolTip": "Models\\Employee.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAmwEIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:19:56.891Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "District.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Models\\District.cs",
+              "RelativeDocumentMoniker": "Models\\District.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Models\\District.cs",
+              "RelativeToolTip": "Models\\District.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAqwCIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:19:51.382Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "Certificate.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Models\\Certificate.cs",
+              "RelativeDocumentMoniker": "Models\\Certificate.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Models\\Certificate.cs",
+              "RelativeToolTip": "Models\\Certificate.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAUwCgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:16:24.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "IWardService.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Interfaces\\IWardService.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IWardService.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Interfaces\\IWardService.cs",
+              "RelativeToolTip": "Interfaces\\IWardService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:16:11.483Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "IWardBusiness.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Interfaces\\IWardBusiness.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IWardBusiness.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Interfaces\\IWardBusiness.cs",
+              "RelativeToolTip": "Interfaces\\IWardBusiness.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:14:54.087Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "IProvinceService.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Interfaces\\IProvinceService.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IProvinceService.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Interfaces\\IProvinceService.cs",
+              "RelativeToolTip": "Interfaces\\IProvinceService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:13:59.446Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "IProvinceBusiness.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Interfaces\\IProvinceBusiness.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IProvinceBusiness.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Interfaces\\IProvinceBusiness.cs",
+              "RelativeToolTip": "Interfaces\\IProvinceBusiness.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAIwBIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:13:52.799Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "IOccupationService.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Interfaces\\IOccupationService.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IOccupationService.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Interfaces\\IOccupationService.cs",
+              "RelativeToolTip": "Interfaces\\IOccupationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:12:03.778Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "IOccupationBusiness.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Interfaces\\IOccupationBusiness.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IOccupationBusiness.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Interfaces\\IOccupationBusiness.cs",
+              "RelativeToolTip": "Interfaces\\IOccupationBusiness.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:11:44.176Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "IEthnicityService.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Interfaces\\IEthnicityService.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IEthnicityService.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Interfaces\\IEthnicityService.cs",
+              "RelativeToolTip": "Interfaces\\IEthnicityService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:11:33.537Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "IEthnicityBusiness.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Interfaces\\IEthnicityBusiness.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IEthnicityBusiness.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Interfaces\\IEthnicityBusiness.cs",
+              "RelativeToolTip": "Interfaces\\IEthnicityBusiness.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:10:39.418Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "IDistrictService.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Interfaces\\IDistrictService.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IDistrictService.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Interfaces\\IDistrictService.cs",
+              "RelativeToolTip": "Interfaces\\IDistrictService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:08:27.977Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "IDistrictBusiness.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Interfaces\\IDistrictBusiness.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IDistrictBusiness.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Interfaces\\IDistrictBusiness.cs",
+              "RelativeToolTip": "Interfaces\\IDistrictBusiness.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:06:35.29Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "IDataSeedingService.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Interfaces\\IDataSeedingService.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IDataSeedingService.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Interfaces\\IDataSeedingService.cs",
+              "RelativeToolTip": "Interfaces\\IDataSeedingService.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAqwBkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:06:22.302Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "WardNestedDto.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Dtos\\WardNestedDto.cs",
+              "RelativeDocumentMoniker": "Dtos\\WardNestedDto.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Dtos\\WardNestedDto.cs",
+              "RelativeToolTip": "Dtos\\WardNestedDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:05:59.436Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "ProvinceNestedDto.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Dtos\\ProvinceNestedDto.cs",
+              "RelativeDocumentMoniker": "Dtos\\ProvinceNestedDto.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Dtos\\ProvinceNestedDto.cs",
+              "RelativeToolTip": "Dtos\\ProvinceNestedDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:05:44.229Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "DistrictNestedDto.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Dtos\\DistrictNestedDto.cs",
+              "RelativeDocumentMoniker": "Dtos\\DistrictNestedDto.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Dtos\\DistrictNestedDto.cs",
+              "RelativeToolTip": "Dtos\\DistrictNestedDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:04:55.94Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "ProvincesController.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Controllers\\ProvincesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProvincesController.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Controllers\\ProvincesController.cs",
+              "RelativeToolTip": "Controllers\\ProvincesController.cs",
+              "ViewState": "AgIAAMwAAAAAAAAAAAAAAOQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:04:22.068Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAADwvw4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:03:58.021Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "WardBusiness.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Business\\WardBusiness.cs",
+              "RelativeDocumentMoniker": "Business\\WardBusiness.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Business\\WardBusiness.cs",
+              "RelativeToolTip": "Business\\WardBusiness.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:03:28.742Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "ProvinceBusiness.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Business\\ProvinceBusiness.cs",
+              "RelativeDocumentMoniker": "Business\\ProvinceBusiness.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Business\\ProvinceBusiness.cs",
+              "RelativeToolTip": "Business\\ProvinceBusiness.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAcwEMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:03:09.893Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "OccupationBusiness.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Business\\OccupationBusiness.cs",
+              "RelativeDocumentMoniker": "Business\\OccupationBusiness.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Business\\OccupationBusiness.cs",
+              "RelativeToolTip": "Business\\OccupationBusiness.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:02:55.885Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "EthnicityBusiness.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Business\\EthnicityBusiness.cs",
+              "RelativeDocumentMoniker": "Business\\EthnicityBusiness.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Business\\EthnicityBusiness.cs",
+              "RelativeToolTip": "Business\\EthnicityBusiness.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:02:39.224Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "DistrictBusiness.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Business\\DistrictBusiness.cs",
+              "RelativeDocumentMoniker": "Business\\DistrictBusiness.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Business\\DistrictBusiness.cs",
+              "RelativeToolTip": "Business\\DistrictBusiness.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:01:52.253Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "AddressApiController.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\ApiControllers\\AddressApiController.cs",
+              "RelativeDocumentMoniker": "ApiControllers\\AddressApiController.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\ApiControllers\\AddressApiController.cs",
+              "RelativeToolTip": "ApiControllers\\AddressApiController.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAAwGAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T08:01:31.844Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "EmployeeFormText.txt",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Employee\\EmployeeFormText.txt",
+              "RelativeDocumentMoniker": "Views\\Employee\\EmployeeFormText.txt",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Employee\\EmployeeFormText.txt",
+              "RelativeToolTip": "Views\\Employee\\EmployeeFormText.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-05-02T14:41:39.563Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "StaffMgmtDbContext.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Data\\StaffMgmtDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\StaffMgmtDbContext.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Data\\StaffMgmtDbContext.cs",
+              "RelativeToolTip": "Data\\StaffMgmtDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T14:33:35.355Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T12:52:15.324Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Employee\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Employee\\Index.cshtml",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Employee\\Index.cshtml",
+              "RelativeToolTip": "Views\\Employee\\Index.cshtml",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAQwHAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-02T09:20:07.924Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Employee\\Delete.cshtml",
+              "RelativeDocumentMoniker": "Views\\Employee\\Delete.cshtml",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Employee\\Delete.cshtml",
+              "RelativeToolTip": "Views\\Employee\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-02T09:19:23.676Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Employee\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\Employee\\Details.cshtml",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Employee\\Details.cshtml",
+              "RelativeToolTip": "Views\\Employee\\Details.cshtml",
+              "ViewState": "AgIAACoAAAAAAAAAAAAQwDsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-02T09:18:59.173Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "EmployeeController.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Controllers\\EmployeeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\EmployeeController.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Controllers\\EmployeeController.cs",
+              "RelativeToolTip": "Controllers\\EmployeeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGgBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T09:17:27.348Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "EmployeeBusiness.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Business\\EmployeeBusiness.cs",
+              "RelativeDocumentMoniker": "Business\\EmployeeBusiness.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Business\\EmployeeBusiness.cs",
+              "RelativeToolTip": "Business\\EmployeeBusiness.cs",
+              "ViewState": "AgIAAJcAAAAAAAAAAAAAwLIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T09:16:25.894Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "IEmployeeBusiness.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Interfaces\\IEmployeeBusiness.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IEmployeeBusiness.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Interfaces\\IEmployeeBusiness.cs",
+              "RelativeToolTip": "Interfaces\\IEmployeeBusiness.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T09:15:00.234Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "IEmployeeService.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Interfaces\\IEmployeeService.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IEmployeeService.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Interfaces\\IEmployeeService.cs",
+              "RelativeToolTip": "Interfaces\\IEmployeeService.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAiwBIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T09:14:34.843Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
+              "Title": "TODO.txt",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\TODO.txt",
+              "RelativeDocumentMoniker": "TODO.txt",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\TODO.txt",
+              "RelativeToolTip": "TODO.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-05-02T09:06:59.564Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "EmployeeForm.cshtml",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Employee\\EmployeeForm.cshtml",
+              "RelativeDocumentMoniker": "Views\\Employee\\EmployeeForm.cshtml",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Views\\Employee\\EmployeeForm.cshtml",
+              "RelativeToolTip": "Views\\Employee\\EmployeeForm.cshtml",
+              "ViewState": "AgIAAEIBAAAAAAAAAAAQwFMBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-02T08:54:18.759Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "EmployeeFormViewModelValidator.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Validators\\EmployeeFormViewModelValidator.cs",
+              "RelativeDocumentMoniker": "Validators\\EmployeeFormViewModelValidator.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Validators\\EmployeeFormViewModelValidator.cs",
+              "RelativeToolTip": "Validators\\EmployeeFormViewModelValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAK0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T08:54:14.838Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "EmployeeService.cs",
+              "DocumentMoniker": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Services\\EmployeeService.cs",
+              "RelativeDocumentMoniker": "Services\\EmployeeService.cs",
+              "ToolTip": "D:\\IT\\Programming language\\C#\\MyProjects\\Oceantech\\StaffMgmt\\Services\\EmployeeService.cs",
+              "RelativeToolTip": "Services\\EmployeeService.cs",
+              "ViewState": "AgIAAL4AAAAAAAAAAAAswNEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T08:48:54.318Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

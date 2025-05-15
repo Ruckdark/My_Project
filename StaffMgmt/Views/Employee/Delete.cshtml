@@ -1,0 +1,51 @@
+﻿@* File: Views/Employee/Delete.cshtml *@
+@model StaffMgmt.Models.Employee
+
+@{
+    ViewData["Title"] = "Xác nhận Xóa Nhân viên";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h3 class="text-danger">Bạn có chắc chắn muốn xóa nhân viên này?</h3>
+<div>
+    <h4>@Model.FullName</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </dt>
+        <dd class="col-sm-9">
+            @Model.DateOfBirth?.ToString("dd/MM/yyyy")
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.IdentityCardNumber)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.IdentityCardNumber)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        @* Thêm các trường khác nếu muốn hiển thị thêm thông tin trước khi xóa *@
+    </dl>
+
+    @* Form để submit yêu cầu xóa *@
+    <form asp-action="Delete">
+        @* ActionName là "Delete" nên không cần ghi rõ *@
+        @Html.AntiForgeryToken()
+        @* Input ẩn chứa Id để Controller biết xóa ai *@
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Xóa" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+    </form>
+</div>

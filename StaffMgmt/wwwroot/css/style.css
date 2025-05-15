@@ -1,0 +1,179 @@
+﻿/* Reset cơ bản và font chữ */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4; /* Màu nền giống mockup */
+    color: #333;
+}
+
+.container {
+    max-width: 900px; /* Giới hạn chiều rộng */
+    margin: 0 auto;
+    background-color: #fff; /* Nền trắng cho container chính */
+    border: 1px solid #ccc; /* Viền giống mockup */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Đổ bóng nhẹ */
+}
+
+/* --- Tabs --- */
+.tabs {
+    display: flex;
+    border-bottom: 1px solid #ccc; /* Đường kẻ dưới tabs */
+}
+
+.tab-button {
+    padding: 10px 15px;
+    border: none;
+    border-right: 1px solid #ccc; /* Viền ngăn cách các tab */
+    background-color: #eee; /* Màu nền tab không active */
+    cursor: pointer;
+    font-size: 14px;
+    border-top-left-radius: 3px; /* Bo góc nhẹ */
+    border-top-right-radius: 3px;
+}
+
+    .tab-button:last-child {
+        border-right: none; /* Bỏ viền phải của tab cuối */
+    }
+
+    .tab-button.active {
+        background-color: #fff; /* Nền trắng cho tab active */
+        border-bottom: 1px solid #fff; /* Che đường kẻ dưới của container */
+        position: relative;
+        top: 1px; /* Nâng tab lên một chút để che đường kẻ */
+        font-weight: bold;
+    }
+
+    .tab-button:hover:not(.active) {
+        background-color: #ddd; /* Hiệu ứng hover */
+    }
+
+/* --- Form --- */
+.employee-form {
+    padding: 20px;
+    border: 1px solid #ccc; /* Viền bao quanh form */
+    margin: -1px 0 0 0; /* Chồng lên viền dưới của tabs */
+    border-top: none; /* Bỏ viền trên vì đã có viền dưới của tabs */
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Chia thành 2 cột bằng nhau */
+    gap: 15px 20px; /* Khoảng cách giữa các hàng và cột */
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column; /* Label nằm trên input */
+}
+
+    .form-group label {
+        margin-bottom: 5px;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    /* Định dạng chung cho input và select */
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group input[type="tel"],
+    .form-group input[type="date"],
+    .form-group select {
+        padding: 8px 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        font-size: 14px;
+        width: 100%; /* Chiếm hết chiều rộng của grid cell */
+        box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước */
+    }
+
+    .form-group input:disabled {
+        background-color: #eee; /* Màu nền khi bị disable */
+        cursor: not-allowed;
+    }
+
+
+/* Định dạng riêng cho ô Ngày sinh có icon */
+.date-group .date-input-wrapper {
+    position: relative;
+    display: flex; /* Để icon nằm cùng hàng */
+    align-items: center;
+}
+
+.date-group input[type="text"] {
+    flex-grow: 1; /* Input chiếm phần lớn không gian */
+}
+
+.date-group .calendar-icon {
+    position: absolute; /* Đặt icon vào trong input */
+    right: 10px;
+    color: #666;
+    cursor: pointer; /* Biểu thị có thể click (nếu thêm date picker JS) */
+}
+/* Nếu dùng input type="date", trình duyệt sẽ tự thêm icon */
+/* input[type="date"]::-webkit-calendar-picker-indicator { ... } */
+
+
+/* Định dạng Checkbox */
+.checkbox-group {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+}
+
+    .checkbox-group input[type="checkbox"] {
+        margin-right: 5px;
+        width: auto; /* Reset width */
+    }
+
+    .checkbox-group label {
+        font-weight: normal; /* Label checkbox không cần đậm */
+        margin-bottom: 0; /* Reset margin */
+    }
+
+/* --- Footer Form --- */
+.form-footer {
+    display: flex;
+    justify-content: space-between; /* Đẩy các phần tử ra 2 đầu */
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee; /* Đường kẻ ngăn cách nhẹ */
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px; /* Khoảng cách giữa 2 nút Hủy và Xác nhận */
+}
+
+/* Định dạng chung cho các nút */
+.back-button,
+.cancel-button,
+.submit-button {
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.back-button {
+    background-color: #f8f8f8;
+}
+
+.cancel-button {
+    background-color: #eee;
+}
+
+.submit-button {
+    background-color: #e0e0e0; /* Màu xám giống mockup */
+    font-weight: bold;
+}
+
+    .back-button:hover,
+    .cancel-button:hover,
+    .submit-button:hover {
+        border-color: #aaa;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
